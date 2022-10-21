@@ -7,14 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0B5753BC2902DB49004BF12F /* GeneralCommodity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B5753BB2902DB49004BF12F /* GeneralCommodity.swift */; };
+		0B5753BF2902DC18004BF12F /* LBTATools in Frameworks */ = {isa = PBXBuildFile; productRef = 0B5753BE2902DC18004BF12F /* LBTATools */; };
 		0B767A8229017D7C00B819A5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B767A8129017D7C00B819A5 /* AppDelegate.swift */; };
 		0B767A8429017D7C00B819A5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B767A8329017D7C00B819A5 /* SceneDelegate.swift */; };
-		0B767A8629017D7C00B819A5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B767A8529017D7C00B819A5 /* ViewController.swift */; };
+		0B767A8629017D7C00B819A5 /* CommodityListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B767A8529017D7C00B819A5 /* CommodityListVC.swift */; };
 		0B767A8B29017D8000B819A5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0B767A8A29017D8000B819A5 /* Assets.xcassets */; };
 		0B767A8E29017D8000B819A5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0B767A8C29017D8000B819A5 /* LaunchScreen.storyboard */; };
 		0B767A9929017D8000B819A5 /* JKO_ProjectTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B767A9829017D8000B819A5 /* JKO_ProjectTests.swift */; };
 		0B767AA329017D8000B819A5 /* JKO_ProjectUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B767AA229017D8000B819A5 /* JKO_ProjectUITests.swift */; };
 		0B767AA529017D8000B819A5 /* JKO_ProjectUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B767AA429017D8000B819A5 /* JKO_ProjectUITestsLaunchTests.swift */; };
+		0B767AB62902D8F600B819A5 /* TestData.json in Resources */ = {isa = PBXBuildFile; fileRef = 0B767AB52902D8F600B819A5 /* TestData.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,10 +38,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0B5753BB2902DB49004BF12F /* GeneralCommodity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralCommodity.swift; sourceTree = "<group>"; };
 		0B767A7E29017D7C00B819A5 /* JKO_Project.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JKO_Project.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0B767A8129017D7C00B819A5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0B767A8329017D7C00B819A5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		0B767A8529017D7C00B819A5 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		0B767A8529017D7C00B819A5 /* CommodityListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommodityListVC.swift; sourceTree = "<group>"; };
 		0B767A8A29017D8000B819A5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0B767A8D29017D8000B819A5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0B767A8F29017D8000B819A5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -47,6 +51,7 @@
 		0B767A9E29017D8000B819A5 /* JKO_ProjectUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JKO_ProjectUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0B767AA229017D8000B819A5 /* JKO_ProjectUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JKO_ProjectUITests.swift; sourceTree = "<group>"; };
 		0B767AA429017D8000B819A5 /* JKO_ProjectUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JKO_ProjectUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		0B767AB52902D8F600B819A5 /* TestData.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = TestData.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +59,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0B5753BF2902DC18004BF12F /* LBTATools in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -74,6 +80,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0B5753BA2902DB20004BF12F /* Commodity */ = {
+			isa = PBXGroup;
+			children = (
+				0B5753BB2902DB49004BF12F /* GeneralCommodity.swift */,
+				0B767A8529017D7C00B819A5 /* CommodityListVC.swift */,
+			);
+			path = Commodity;
+			sourceTree = "<group>";
+		};
 		0B767A7529017D7C00B819A5 = {
 			isa = PBXGroup;
 			children = (
@@ -97,9 +112,10 @@
 		0B767A8029017D7C00B819A5 /* JKO_Project */ = {
 			isa = PBXGroup;
 			children = (
+				0B767AB42902D8DE00B819A5 /* JSON */,
+				0B5753BA2902DB20004BF12F /* Commodity */,
 				0B767A8129017D7C00B819A5 /* AppDelegate.swift */,
 				0B767A8329017D7C00B819A5 /* SceneDelegate.swift */,
-				0B767A8529017D7C00B819A5 /* ViewController.swift */,
 				0B767A8A29017D8000B819A5 /* Assets.xcassets */,
 				0B767A8C29017D8000B819A5 /* LaunchScreen.storyboard */,
 				0B767A8F29017D8000B819A5 /* Info.plist */,
@@ -124,6 +140,14 @@
 			path = JKO_ProjectUITests;
 			sourceTree = "<group>";
 		};
+		0B767AB42902D8DE00B819A5 /* JSON */ = {
+			isa = PBXGroup;
+			children = (
+				0B767AB52902D8F600B819A5 /* TestData.json */,
+			);
+			path = JSON;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -140,6 +164,9 @@
 			dependencies = (
 			);
 			name = JKO_Project;
+			packageProductDependencies = (
+				0B5753BE2902DC18004BF12F /* LBTATools */,
+			);
 			productName = JKO_Project;
 			productReference = 0B767A7E29017D7C00B819A5 /* JKO_Project.app */;
 			productType = "com.apple.product-type.application";
@@ -212,6 +239,9 @@
 				Base,
 			);
 			mainGroup = 0B767A7529017D7C00B819A5;
+			packageReferences = (
+				0B5753BD2902DC18004BF12F /* XCRemoteSwiftPackageReference "LBTATools" */,
+			);
 			productRefGroup = 0B767A7F29017D7C00B819A5 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -230,6 +260,7 @@
 			files = (
 				0B767A8E29017D8000B819A5 /* LaunchScreen.storyboard in Resources */,
 				0B767A8B29017D8000B819A5 /* Assets.xcassets in Resources */,
+				0B767AB62902D8F600B819A5 /* TestData.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -254,7 +285,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0B767A8629017D7C00B819A5 /* ViewController.swift in Sources */,
+				0B767A8629017D7C00B819A5 /* CommodityListVC.swift in Sources */,
+				0B5753BC2902DB49004BF12F /* GeneralCommodity.swift in Sources */,
 				0B767A8229017D7C00B819A5 /* AppDelegate.swift in Sources */,
 				0B767A8429017D7C00B819A5 /* SceneDelegate.swift in Sources */,
 			);
@@ -592,6 +624,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		0B5753BD2902DC18004BF12F /* XCRemoteSwiftPackageReference "LBTATools" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/bhlvoong/LBTATools";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		0B5753BE2902DC18004BF12F /* LBTATools */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0B5753BD2902DC18004BF12F /* XCRemoteSwiftPackageReference "LBTATools" */;
+			productName = LBTATools;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 0B767A7629017D7C00B819A5 /* Project object */;
 }
