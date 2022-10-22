@@ -42,7 +42,14 @@ class CommodityListCell: UITableViewCell {
         addSubview(priceLabel)
         addSubview(dateLabel)
         
-        commodityImageView.anchor(top: topAnchor, leading: leadingAnchor, bottom: bottomAnchor, trailing: nil, padding: .init(top: 10, left: 10, bottom: 0, right: 10), size: .init(width: 50, height: 50))
+        commodityImageView.translatesAutoresizingMaskIntoConstraints = false
+        commodityImageView.contentMode = .scaleAspectFit
+        NSLayoutConstraint.activate([
+            commodityImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10),
+            commodityImageView.topAnchor.constraint(equalTo: topAnchor, constant: 10),
+            commodityImageView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -10),
+            commodityImageView.widthAnchor.constraint(equalTo: heightAnchor)
+        ])
         
         dateLabel.anchor(top: nil, leading: nil, bottom: bottomAnchor, trailing: trailingAnchor, padding: .init(top: 0, left: 0, bottom: 8, right: 8))
         
