@@ -2,6 +2,8 @@ import UIKit
 import LBTATools
 
 class HistoryVC: UIViewController {
+    private var orders = RealmManager.shared.fetch(Order.self)
+    
     private lazy var tableView: UITableView = {
         let tb = UITableView(frame: .zero, style: .insetGrouped)
         tb.register(CommodityListCell.self, forCellReuseIdentifier: CommodityListCell.cellId)
@@ -13,6 +15,7 @@ class HistoryVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
+        orders = orders.sorted(byKeyPath: "createAt", ascending: false)
         setupNavBar()
         setupUI()
     }
@@ -30,11 +33,10 @@ class HistoryVC: UIViewController {
 
 extension HistoryVC: UITableViewDelegate, UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
-        return RealmManager.shared.fetch(Order.self).count
+        return orders.count
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let orders = RealmManager.shared.fetch(Order.self)
         let order = orders[section]
         return order.items.count
     }
@@ -42,7 +44,6 @@ extension HistoryVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: CommodityListCell.cellId, for: indexPath) as! CommodityListCell
         cell.selectionStyle = .none
-        let orders = RealmManager.shared.fetch(Order.self)
         let order = orders[indexPath.section]
         let item = order.items[indexPath.item]
         cell.commodity = item
@@ -59,7 +60,6 @@ extension HistoryVC: UITableViewDelegate, UITableViewDataSource {
         titleLabel.textAlignment = .center
         titleLabel.numberOfLines = 0
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
-        let orders = RealmManager.shared.fetch(Order.self)
         let order = orders[section]
         let timeIntervalSince1970 = order.createAt
         let timeInterval = TimeInterval(timeIntervalSince1970)

@@ -30,6 +30,7 @@ class CommodityListVC: UIViewController {
             do {
                 let collection = try JSONDecoder().decode(CommoditiesCollection.self, from: data)
                 self.items = collection.items
+                self.items.sort(by: { $0.createAt > $1.createAt })
             } catch {
                 print("Error - Decode Failed:\(error)")
             }
