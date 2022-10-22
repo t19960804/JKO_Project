@@ -19,8 +19,7 @@ class CommodityListCell: UITableViewCell {
 
             let timeIntervalSince1970 = commodity?.createAt ?? 0
             let timeInterval = TimeInterval(timeIntervalSince1970)
-            let date = Date(timeIntervalSince1970: timeInterval)
-            dateLabel.text = date.toString(format: "yyyy/MM/dd")
+            dateLabel.text = timeInterval.toString(format: "yyyy/MM/dd")
         }
     }
     

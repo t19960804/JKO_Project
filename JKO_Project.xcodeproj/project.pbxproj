@@ -28,7 +28,7 @@
 		0BF0FD7F2903CB1B00D2DB8D /* RealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BF0FD7E2903CB1B00D2DB8D /* RealmManager.swift */; };
 		0BF0FD822903CCB700D2DB8D /* Order.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BF0FD812903CCB700D2DB8D /* Order.swift */; };
 		0BF0FD852903D3F900D2DB8D /* HistoryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BF0FD842903D3F900D2DB8D /* HistoryVC.swift */; };
-		0BF0FD882903D69100D2DB8D /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BF0FD872903D69100D2DB8D /* DateExtension.swift */; };
+		0BF0FD882903D69100D2DB8D /* TimeIntervalExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BF0FD872903D69100D2DB8D /* TimeIntervalExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,8 +71,7 @@
 		0BF0FD7E2903CB1B00D2DB8D /* RealmManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmManager.swift; sourceTree = "<group>"; };
 		0BF0FD812903CCB700D2DB8D /* Order.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Order.swift; sourceTree = "<group>"; };
 		0BF0FD842903D3F900D2DB8D /* HistoryVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryVC.swift; sourceTree = "<group>"; };
-		0BF0FD872903D69100D2DB8D /* DateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
-		0BF1FBEC2903D7E10070C02F /* HistoryDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryDetailVC.swift; sourceTree = "<group>"; };
+		0BF0FD872903D69100D2DB8D /* TimeIntervalExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeIntervalExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -232,7 +231,6 @@
 			isa = PBXGroup;
 			children = (
 				0BF0FD842903D3F900D2DB8D /* HistoryVC.swift */,
-				0BF1FBEC2903D7E10070C02F /* HistoryDetailVC.swift */,
 			);
 			path = History;
 			sourceTree = "<group>";
@@ -240,7 +238,7 @@
 		0BF0FD862903D64F00D2DB8D /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				0BF0FD872903D69100D2DB8D /* DateExtension.swift */,
+				0BF0FD872903D69100D2DB8D /* TimeIntervalExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -391,7 +389,7 @@
 				0BB796132903A26200E280BB /* CommodityDetailVC.swift in Sources */,
 				0BB796192903AC4700E280BB /* CartVC.swift in Sources */,
 				0BB796162903A85400E280BB /* CartManager.swift in Sources */,
-				0BF0FD882903D69100D2DB8D /* DateExtension.swift in Sources */,
+				0BF0FD882903D69100D2DB8D /* TimeIntervalExtension.swift in Sources */,
 				0BF0FD822903CCB700D2DB8D /* Order.swift in Sources */,
 				0B50EB3F2903B44B001D0624 /* PaymentVC.swift in Sources */,
 				0B5753BC2902DB49004BF12F /* GeneralCommodity.swift in Sources */,

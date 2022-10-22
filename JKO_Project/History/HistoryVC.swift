@@ -63,8 +63,7 @@ extension HistoryVC: UITableViewDelegate, UITableViewDataSource {
         let order = orders[section]
         let timeIntervalSince1970 = order.createAt
         let timeInterval = TimeInterval(timeIntervalSince1970)
-        let date = Date(timeIntervalSince1970: timeInterval)
-        titleLabel.text = date.toString(format: "yyyy/MM/dd HH:mm") + "\n$\(order.totalPrice)"
+        titleLabel.text = timeInterval.toString(format: "yyyy/MM/dd HH:mm") + "\n$\(order.totalPrice)"
         header.addSubview(titleLabel)
         titleLabel.centerInSuperview()
         return header
