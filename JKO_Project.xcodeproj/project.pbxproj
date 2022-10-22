@@ -72,6 +72,7 @@
 		0BF0FD812903CCB700D2DB8D /* Order.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Order.swift; sourceTree = "<group>"; };
 		0BF0FD842903D3F900D2DB8D /* HistoryVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryVC.swift; sourceTree = "<group>"; };
 		0BF0FD872903D69100D2DB8D /* DateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
+		0BF1FBEC2903D7E10070C02F /* HistoryDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryDetailVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -231,6 +232,7 @@
 			isa = PBXGroup;
 			children = (
 				0BF0FD842903D3F900D2DB8D /* HistoryVC.swift */,
+				0BF1FBEC2903D7E10070C02F /* HistoryDetailVC.swift */,
 			);
 			path = History;
 			sourceTree = "<group>";

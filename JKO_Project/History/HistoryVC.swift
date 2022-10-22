@@ -3,8 +3,8 @@ import LBTATools
 
 class HistoryVC: UIViewController {
     lazy var tableView: UITableView = {
-        let tb = UITableView()
-        tb.register(UITableViewCell.self, forCellReuseIdentifier: "cellId")
+        let tb = UITableView(frame: .zero, style: .insetGrouped)
+        tb.register(CommodityListCell.self, forCellReuseIdentifier: CommodityListCell.cellId)
         tb.delegate = self
         tb.dataSource = self
         return tb
@@ -34,22 +34,44 @@ extension HistoryVC: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        let orders = RealmManager.shared.fetch(Order.self)
+        let order = orders[section]
+        return order.items.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cellId", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: CommodityListCell.cellId, for: indexPath) as! CommodityListCell
         cell.selectionStyle = .none
         let orders = RealmManager.shared.fetch(Order.self)
-        let timeIntervalSince1970 = orders[indexPath.item].createAt
-        let timeInterval = TimeInterval(timeIntervalSince1970)
-        let date = Date(timeIntervalSince1970: timeInterval)
-        cell.textLabel?.text = date.toString(format: "yyyy/MM/dd HH:mm")
+        let order = orders[indexPath.section]
+        let item = order.items[indexPath.item]
+        cell.commodity = item
         return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 90
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let header = UIView()
+        let titleLabel = UILabel()
+        titleLabel.textAlignment = .center
+        titleLabel.numberOfLines = 0
+        titleLabel.translatesAutoresizingMaskIntoConstraints = false
+        let orders = RealmManager.shared.fetch(Order.self)
+        let order = orders[section]
+        let timeIntervalSince1970 = order.createAt
+        let timeInterval = TimeInterval(timeIntervalSince1970)
+        let date = Date(timeIntervalSince1970: timeInterval)
+        titleLabel.text = date.toString(format: "yyyy/MM/dd HH:mm") + "\n總價格:\(order.totalPrice)"
+        header.addSubview(titleLabel)
+        titleLabel.centerInSuperview()
+        return header
+    }
+
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 80
     }
 }
 
