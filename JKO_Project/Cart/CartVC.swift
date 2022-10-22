@@ -72,4 +72,13 @@ extension CartVC: UITableViewDelegate, UITableViewDataSource {
         checkStatus[indexPath.item] = !isChecked
         cell?.accessoryType = checkStatus[indexPath.item] ? .checkmark : .none
     }
+    
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let deleteAction = UIContextualAction(style: .destructive, title: "刪除") { (_, _, _) in
+            CartManager.shared.deleteAt(indexPath.item)
+            tableView.deleteRows(at: [indexPath], with: .automatic)
+        }
+        let swipeActions = UISwipeActionsConfiguration(actions: [deleteAction])
+        return swipeActions
+    }
 }

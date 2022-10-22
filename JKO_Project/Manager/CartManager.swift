@@ -22,4 +22,11 @@ class CartManager {
     func add(_ commodities: [GeneralCommidity]) {
         currentCommodities += commodities
     }
+    
+    func deleteAt(_ index: Int) {
+        if currentCommodities.isEmpty || index >= currentCommodities.count {
+            return
+        }
+        currentCommodities.remove(at: index)
+    }
 }
