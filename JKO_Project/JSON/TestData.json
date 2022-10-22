@@ -1,0 +1,18 @@
+{
+  "items": [
+    {
+      "name":"AirPods Pro (第 2 代)",
+      "description":"AirPods Pro (第 2 代) 經重新再造，讓「主動式降噪」效能提升最高可達 2 倍。「適應性通透模式」可減少外部噪音，「個人化空間音訊」則為你帶來更沉浸式的音效。充電一次，電池續航力最長可達 6 小時⁷。觸控控制，讓你輕輕滑動就可調整音量。MagSage 充電盒的精進，令人稱奇。支援「精確尋找」功能¹⁵、內建揚聲器並附有掛繩孔˄。",
+      "price":7500,
+      "createAt":1666360000,
+      "imageName":"AirPodsPro2"
+    },
+    {
+      "name":"Apple Watch Ultra",
+      "description":"航太等級鈦金屬錶殼，在重量與耐用性間取得完美平衡，並具備耐蝕度。",
+      "price":26000,
+      "createAt":1666363600,
+      "imageName":"AppleWatchUltra"
+    }
+  ]
+}
