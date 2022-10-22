@@ -13,11 +13,7 @@ class CommodityListVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
         view.backgroundColor = .white
-        title = "商品列表"
-        navigationController?.navigationBar.prefersLargeTitles = true
-        
         if let url = Bundle.main.url(forResource: "TestData", withExtension: "json") {
             do {
                 let data = try Data(contentsOf: url)
@@ -31,9 +27,28 @@ class CommodityListVC: UIViewController {
                 print("Error - Get Data Failed:\(error)")
             }
         }
+        setupNavBar()
         setupUI()
     }
 
+    private func setupNavBar() {
+        title = "商品列表"
+        navigationController?.navigationBar.prefersLargeTitles = true
+        
+        let cart = UIBarButtonItem(title: "購物車", style: .plain, target: self, action: #selector(cartTapped))
+        let history = UIBarButtonItem(title: "歷史訂單", style: .plain, target: self, action: #selector(historyTapped))
+        navigationItem.rightBarButtonItems = [cart, history]
+    }
+    
+    @objc private func cartTapped() {
+        let vc = CartVC()
+        navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    @objc private func historyTapped() {
+        
+    }
+    
     private func setupUI() {
         view.addSubview(tableView)
         tableView.fillSuperviewSafeAreaLayoutGuide()
@@ -56,8 +71,7 @@ extension CommodityListVC: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let vc = CommodityDetailVC()
-        vc.commodity = items[indexPath.item]
+        let vc = CommodityDetailVC(commodity: items[indexPath.item])
         navigationController?.pushViewController(vc, animated: true)
     }
 }

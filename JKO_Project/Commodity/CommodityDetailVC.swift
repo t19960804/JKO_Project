@@ -1,5 +1,6 @@
 import UIKit
 import LBTATools
+import JGProgressHUD
 
 class CommodityDetailVC: UIViewController {
     let commodityImageView = UIImageView(image: nil)
@@ -8,25 +9,45 @@ class CommodityDetailVC: UIViewController {
     let priceLabel = UILabel(text: "", font: .boldSystemFont(ofSize: 12), textColor: .black, textAlignment: .left, numberOfLines: 0)
     let dateLabel = UILabel(text: "", font: .boldSystemFont(ofSize: 11), textColor: .black, textAlignment: .right, numberOfLines: 0)
     
-    var commodity: GeneralCommidity? {
-        didSet {
-            commodityImageView.image = UIImage(named: commodity?.imageName ?? "")
-            nameLabel.text = commodity?.name
-            descriptionLabel.text = commodity?.description
-            priceLabel.text = "\(commodity?.price ?? -1)"
+    let hud: JGProgressHUD = {
+        let hud = JGProgressHUD()
+        let view = JGProgressHUDSuccessIndicatorView()
+        hud.indicatorView = view
+        hud.textLabel.text = "加入成功"
+        return hud
+    }()
+    
+    private var commodity: GeneralCommidity!
 
-            let timeIntervalSince1970 = commodity?.createAt ?? 0
-            let timeInterval = TimeInterval(timeIntervalSince1970)
-            let date = Date(timeIntervalSince1970: timeInterval)
-            let dateFormatter = DateFormatter()
-            dateFormatter.dateFormat = "yyyy/MM/dd HH:mm"
-            let dayString = dateFormatter.string(from: date)
-            dateLabel.text = dayString
-        }
+    init(commodity: GeneralCommidity) {
+        super.init(nibName: nil, bundle: nil)
+        self.commodity = commodity
     }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         view.backgroundColor = .white
+        setupNavBar()
         setupUI()
+    }
+    
+    private func setupNavBar() {
+        let buy = UIBarButtonItem(title: "立即購買", style: .plain, target: self, action: #selector(buyTapped))
+        let addToCart = UIBarButtonItem(title: "加入購物車", style: .plain, target: self, action: #selector(addToCartTapped))
+        navigationItem.rightBarButtonItems = [addToCart, buy]
+    }
+    
+    @objc private func buyTapped() {
+        print("立即購買")
+    }
+    @objc private func addToCartTapped() {
+        print("加入購物車")
+        hud.show(in: view, animated: true)
+        CartManager.shared.add([self.commodity])
+        hud.dismiss(afterDelay: 1.5)
     }
     
     private func setupUI() {
@@ -36,6 +57,7 @@ class CommodityDetailVC: UIViewController {
         view.addSubview(nameLabel)
         view.addSubview(priceLabel)
         view.addSubview(descriptionLabel)
+        view.addSubview(hud)
         
         commodityImageView.anchor(top: view.safeAreaLayoutGuide.topAnchor, leading: view.leadingAnchor, bottom: nil, trailing: view.trailingAnchor, size: .init(width: 0, height: 180))
         
@@ -44,5 +66,20 @@ class CommodityDetailVC: UIViewController {
         priceLabel.anchor(top: nameLabel.bottomAnchor, leading: view.leadingAnchor, bottom: nil, trailing: view.trailingAnchor, padding: .init(top: 8, left: 8, bottom: 0, right: 8))
         
         descriptionLabel.anchor(top: priceLabel.bottomAnchor, leading: view.leadingAnchor, bottom: nil, trailing: view.trailingAnchor, padding: .init(top: 8, left: 8, bottom: 0, right: 8))
+        
+        hud.centerInSuperview()
+        
+        commodityImageView.image = UIImage(named: commodity.imageName)
+        nameLabel.text = commodity.name
+        descriptionLabel.text = commodity.description
+        priceLabel.text = "\(commodity.price)"
+
+        let timeIntervalSince1970 = commodity.createAt
+        let timeInterval = TimeInterval(timeIntervalSince1970)
+        let date = Date(timeIntervalSince1970: timeInterval)
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy/MM/dd HH:mm"
+        let dayString = dateFormatter.string(from: date)
+        dateLabel.text = dayString
     }
 }
