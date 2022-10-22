@@ -4,7 +4,7 @@ import LBTATools
 class CommodityListVC: UIViewController {
     lazy var tableView: UITableView = {
         let tb = UITableView()
-        tb.register(UITableViewCell.self, forCellReuseIdentifier: "cellId")
+        tb.register(CommodityListCell.self, forCellReuseIdentifier: CommodityListCell.cellId)
         tb.delegate = self
         tb.dataSource = self
         return tb
@@ -46,8 +46,16 @@ extension CommodityListVC: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cellId", for: indexPath)
-        cell.backgroundColor = .red
+        let cell = tableView.dequeueReusableCell(withIdentifier: CommodityListCell.cellId, for: indexPath) as! CommodityListCell
+        cell.commodity = items[indexPath.item]
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 70
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print("123")
     }
 }
