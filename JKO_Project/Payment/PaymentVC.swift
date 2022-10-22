@@ -61,8 +61,17 @@ class PaymentVC: UIViewController {
         order.createAt = Int(Date().timeIntervalSince1970)
         order.totalPrice = getTotalPrice()
         RealmManager.shared.save(order)
-        
+        for item in items {
+            if let index = CartManager.shared.getCurrentCommodities().firstIndex(where: {
+                ($0.item?.name == item.item?.name) && ($0.item?.createAt == item.item?.createAt)
+            }) {
+                CartManager.shared.deleteAt(index)
+            }
+        }
         hud.dismiss(afterDelay: 1.5)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.7, execute: {
+            self.navigationController?.popToRootViewController(animated: true)
+        })
     }
     
     private func getTotalPrice() -> Int {

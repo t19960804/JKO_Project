@@ -10,7 +10,7 @@ class CartVC: UIViewController {
         return tb
     }()
     
-    private var checkStatus = Array(repeating: false, count: CartManager.shared.getNumberOfCurrentCommodities())
+    private var checkStatus = Array(repeating: false, count: CartManager.shared.getCurrentCommodities().count)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,7 +49,7 @@ class CartVC: UIViewController {
 
 extension CartVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return CartManager.shared.getNumberOfCurrentCommodities()
+        return CartManager.shared.getCurrentCommodities().count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

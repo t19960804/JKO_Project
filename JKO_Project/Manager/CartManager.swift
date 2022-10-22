@@ -16,8 +16,8 @@ class CartManager {
         return currentCommodities[index]
     }
     
-    func getNumberOfCurrentCommodities() -> Int {
-        currentCommodities.count
+    func getCurrentCommodities() -> [CommodityInCart] {
+        return currentCommodities
     }
     
     func add(_ commodities: [GeneralCommidity]) {
