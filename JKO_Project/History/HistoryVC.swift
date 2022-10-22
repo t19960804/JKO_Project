@@ -46,7 +46,7 @@ extension HistoryVC: UITableViewDelegate, UITableViewDataSource {
         cell.selectionStyle = .none
         let order = orders[indexPath.section]
         let item = order.items[indexPath.item]
-        cell.commodity = item
+        cell.commodity = item.item
         return cell
     }
     

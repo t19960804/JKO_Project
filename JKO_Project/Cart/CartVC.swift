@@ -28,7 +28,7 @@ class CartVC: UIViewController {
     }
     
     @objc private func settleTapped() {
-        var itemsChecked = [GeneralCommidity]()
+        var itemsChecked = [CommodityInCart]()
         for i in 0..<checkStatus.count {
             let isChecked = checkStatus[i]
             if isChecked {
@@ -55,7 +55,7 @@ extension CartVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: CommodityListCell.cellId, for: indexPath) as! CommodityListCell
         cell.selectionStyle = .none
-        cell.commodity = CartManager.shared.getCurrentCommodityAt(indexPath.item)
+        cell.commodity = CartManager.shared.getCurrentCommodityAt(indexPath.item)?.item
         
         let isChecked = checkStatus[indexPath.item]
         cell.accessoryType = isChecked ? .checkmark : .none

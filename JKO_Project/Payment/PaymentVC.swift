@@ -20,9 +20,9 @@ class PaymentVC: UIViewController {
         return hud
     }()
     
-    private var items = [GeneralCommidity]()
+    private var items = [CommodityInCart]()
     
-    init(items: [GeneralCommidity]) {
+    init(items: [CommodityInCart]) {
         super.init(nibName: nil, bundle: nil)
         self.items = items
     }
@@ -54,7 +54,7 @@ class PaymentVC: UIViewController {
     @objc private func confirmTapped() {
         hud.show(in: view, animated: true)
         
-        let itemList = List<GeneralCommidity>()
+        let itemList = List<CommodityInCart>()
         itemList.append(objectsIn: items)
         let order = Order()
         order.items = itemList
@@ -68,7 +68,7 @@ class PaymentVC: UIViewController {
     private func getTotalPrice() -> Int {
         var totalPrice = 0
         items.forEach({
-            totalPrice += $0.price
+            totalPrice += $0.item?.price ?? 0
         })
         return totalPrice
     }
@@ -82,7 +82,7 @@ extension PaymentVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: CommodityListCell.cellId, for: indexPath) as! CommodityListCell
         cell.selectionStyle = .none
-        cell.commodity = items[indexPath.item]
+        cell.commodity = items[indexPath.item].item
         return cell
     }
     
