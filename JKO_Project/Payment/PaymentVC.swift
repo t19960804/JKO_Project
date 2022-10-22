@@ -1,5 +1,7 @@
 import UIKit
 import LBTATools
+import RealmSwift
+import JGProgressHUD
 
 class PaymentVC: UIViewController {
     lazy var tableView: UITableView = {
@@ -9,6 +11,15 @@ class PaymentVC: UIViewController {
         tb.dataSource = self
         return tb
     }()
+    
+    let hud: JGProgressHUD = {
+        let hud = JGProgressHUD()
+        let view = JGProgressHUDSuccessIndicatorView()
+        hud.indicatorView = view
+        hud.textLabel.text = "提交成功"
+        return hud
+    }()
+    
     private var items = [GeneralCommidity]()
     
     init(items: [GeneralCommidity]) {
@@ -41,7 +52,25 @@ class PaymentVC: UIViewController {
     }
     
     @objc private func confirmTapped() {
+        hud.show(in: view, animated: true)
         
+        let itemList = List<GeneralCommidity>()
+        itemList.append(objectsIn: items)
+        let order = Order()
+        order.items = itemList
+        order.createAt = Int(Date().timeIntervalSince1970)
+        order.totalPrice = getTotalPrice()
+        RealmManager.shared.save(order)
+        
+        hud.dismiss(afterDelay: 1.5)
+    }
+    
+    private func getTotalPrice() -> Int {
+        var totalPrice = 0
+        items.forEach({
+            totalPrice += $0.price
+        })
+        return totalPrice
     }
 }
 
@@ -67,12 +96,7 @@ extension PaymentVC: UITableViewDelegate, UITableViewDataSource {
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         titleLabel.numberOfLines = 0
         titleLabel.lineBreakMode = .byWordWrapping
-        
-        var totalPrice = 0
-        items.forEach({
-            totalPrice += $0.price
-        })
-        titleLabel.text  = "總價格: \(totalPrice)"
+        titleLabel.text  = "總價格: \(getTotalPrice())"
         footer.addSubview(titleLabel)
         titleLabel.centerInSuperview()
         return footer

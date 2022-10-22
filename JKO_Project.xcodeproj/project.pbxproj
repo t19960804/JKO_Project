@@ -24,6 +24,9 @@
 		0BB796162903A85400E280BB /* CartManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB796152903A85400E280BB /* CartManager.swift */; };
 		0BB796192903AC4700E280BB /* CartVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB796182903AC4700E280BB /* CartVC.swift */; };
 		0BB7961C2903AE2100E280BB /* JGProgressHUD in Frameworks */ = {isa = PBXBuildFile; productRef = 0BB7961B2903AE2100E280BB /* JGProgressHUD */; };
+		0BF0FD7D2903CAE900D2DB8D /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 0BF0FD7C2903CAE900D2DB8D /* RealmSwift */; };
+		0BF0FD7F2903CB1B00D2DB8D /* RealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BF0FD7E2903CB1B00D2DB8D /* RealmManager.swift */; };
+		0BF0FD822903CCB700D2DB8D /* Order.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BF0FD812903CCB700D2DB8D /* Order.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +66,8 @@
 		0BB796122903A26200E280BB /* CommodityDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommodityDetailVC.swift; sourceTree = "<group>"; };
 		0BB796152903A85400E280BB /* CartManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartManager.swift; sourceTree = "<group>"; };
 		0BB796182903AC4700E280BB /* CartVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartVC.swift; sourceTree = "<group>"; };
+		0BF0FD7E2903CB1B00D2DB8D /* RealmManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmManager.swift; sourceTree = "<group>"; };
+		0BF0FD812903CCB700D2DB8D /* Order.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Order.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,6 +75,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0BF0FD7D2903CAE900D2DB8D /* RealmSwift in Frameworks */,
 				0BB7961C2903AE2100E280BB /* JGProgressHUD in Frameworks */,
 				0B5753BF2902DC18004BF12F /* LBTATools in Frameworks */,
 			);
@@ -95,6 +101,7 @@
 		0B50EB3D2903B437001D0624 /* Payment */ = {
 			isa = PBXGroup;
 			children = (
+				0BF0FD802903CC9E00D2DB8D /* Model */,
 				0B50EB3E2903B44B001D0624 /* PaymentVC.swift */,
 			);
 			path = Payment;
@@ -193,6 +200,7 @@
 			isa = PBXGroup;
 			children = (
 				0BB796152903A85400E280BB /* CartManager.swift */,
+				0BF0FD7E2903CB1B00D2DB8D /* RealmManager.swift */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -203,6 +211,14 @@
 				0BB796182903AC4700E280BB /* CartVC.swift */,
 			);
 			path = Cart;
+			sourceTree = "<group>";
+		};
+		0BF0FD802903CC9E00D2DB8D /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				0BF0FD812903CCB700D2DB8D /* Order.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -224,6 +240,7 @@
 			packageProductDependencies = (
 				0B5753BE2902DC18004BF12F /* LBTATools */,
 				0BB7961B2903AE2100E280BB /* JGProgressHUD */,
+				0BF0FD7C2903CAE900D2DB8D /* RealmSwift */,
 			);
 			productName = JKO_Project;
 			productReference = 0B767A7E29017D7C00B819A5 /* JKO_Project.app */;
@@ -300,6 +317,7 @@
 			packageReferences = (
 				0B5753BD2902DC18004BF12F /* XCRemoteSwiftPackageReference "LBTATools" */,
 				0BB7961A2903AE2100E280BB /* XCRemoteSwiftPackageReference "JGProgressHUD" */,
+				0BF0FD7B2903CAE900D2DB8D /* XCRemoteSwiftPackageReference "realm-cocoa" */,
 			);
 			productRefGroup = 0B767A7F29017D7C00B819A5 /* Products */;
 			projectDirPath = "";
@@ -348,9 +366,11 @@
 				0BB796132903A26200E280BB /* CommodityDetailVC.swift in Sources */,
 				0BB796192903AC4700E280BB /* CartVC.swift in Sources */,
 				0BB796162903A85400E280BB /* CartManager.swift in Sources */,
+				0BF0FD822903CCB700D2DB8D /* Order.swift in Sources */,
 				0B50EB3F2903B44B001D0624 /* PaymentVC.swift in Sources */,
 				0B5753BC2902DB49004BF12F /* GeneralCommodity.swift in Sources */,
 				0BB7961029039BB600E280BB /* CommodityListCell.swift in Sources */,
+				0BF0FD7F2903CB1B00D2DB8D /* RealmManager.swift in Sources */,
 				0B767A8229017D7C00B819A5 /* AppDelegate.swift in Sources */,
 				0B767A8429017D7C00B819A5 /* SceneDelegate.swift in Sources */,
 			);
@@ -706,6 +726,14 @@
 				kind = branch;
 			};
 		};
+		0BF0FD7B2903CAE900D2DB8D /* XCRemoteSwiftPackageReference "realm-cocoa" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/realm/realm-cocoa";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -718,6 +746,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 0BB7961A2903AE2100E280BB /* XCRemoteSwiftPackageReference "JGProgressHUD" */;
 			productName = JGProgressHUD;
+		};
+		0BF0FD7C2903CAE900D2DB8D /* RealmSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0BF0FD7B2903CAE900D2DB8D /* XCRemoteSwiftPackageReference "realm-cocoa" */;
+			productName = RealmSwift;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

@@ -48,7 +48,9 @@ class CommodityDetailVC: UIViewController {
     }
     @objc private func addToCartTapped() {
         hud.show(in: view, animated: true)
+        
         CartManager.shared.add([self.commodity])
+        
         hud.dismiss(afterDelay: 1.5)
     }
     
@@ -73,7 +75,7 @@ class CommodityDetailVC: UIViewController {
         
         commodityImageView.image = UIImage(named: commodity.imageName)
         nameLabel.text = commodity.name
-        descriptionLabel.text = commodity.description
+        descriptionLabel.text = commodity.descript
         priceLabel.text = "\(commodity.price)"
 
         let timeIntervalSince1970 = commodity.createAt
