@@ -20,9 +20,9 @@ class PaymentVC: UIViewController {
         return hud
     }()
     
-    private var items = [CommodityInCart]()
+    private var items = [GeneralCommidity]()
     
-    init(items: [CommodityInCart]) {
+    init(items: [GeneralCommidity]) {
         super.init(nibName: nil, bundle: nil)
         self.items = items
     }
@@ -54,7 +54,7 @@ class PaymentVC: UIViewController {
     @objc private func confirmTapped() {
         hud.show(in: view, animated: true)
         
-        let itemList = List<CommodityInCart>()
+        let itemList = List<GeneralCommidity>()
         itemList.append(objectsIn: items)
         let order = Order()
         order.items = itemList
@@ -63,7 +63,7 @@ class PaymentVC: UIViewController {
         RealmManager.shared.save(order)
         for item in items {
             if let index = CartManager.shared.getCurrentCommodities().firstIndex(where: {
-                ($0.item?.name == item.item?.name) && ($0.item?.createAt == item.item?.createAt)
+                ($0.item?.name == item.name) && ($0.item?.createAt == item.createAt)
             }) {
                 CartManager.shared.deleteAt(index)
             }
@@ -77,7 +77,7 @@ class PaymentVC: UIViewController {
     private func getTotalPrice() -> Int {
         var totalPrice = 0
         items.forEach({
-            totalPrice += $0.item?.price ?? 0
+            totalPrice += $0.price 
         })
         return totalPrice
     }
@@ -91,7 +91,7 @@ extension PaymentVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: CommodityListCell.cellId, for: indexPath) as! CommodityListCell
         cell.selectionStyle = .none
-        cell.commodity = items[indexPath.item].item
+        cell.commodity = items[indexPath.item]
         return cell
     }
     

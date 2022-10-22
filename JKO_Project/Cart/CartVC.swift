@@ -28,12 +28,13 @@ class CartVC: UIViewController {
     }
     
     @objc private func settleTapped() {
-        var itemsChecked = [CommodityInCart]()
+        var itemsChecked = [GeneralCommidity]()
         for i in 0..<checkStatus.count {
             let isChecked = checkStatus[i]
             if isChecked {
-                if let commodity = CartManager.shared.getCurrentCommodityAt(i) {
-                    itemsChecked.append(commodity)
+                if let commodity = CartManager.shared.getCurrentCommodityAt(i),
+                   let item = commodity.item {
+                    itemsChecked.append(item)
                 }
             }
         }
