@@ -27,6 +27,8 @@
 		0BF0FD7D2903CAE900D2DB8D /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 0BF0FD7C2903CAE900D2DB8D /* RealmSwift */; };
 		0BF0FD7F2903CB1B00D2DB8D /* RealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BF0FD7E2903CB1B00D2DB8D /* RealmManager.swift */; };
 		0BF0FD822903CCB700D2DB8D /* Order.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BF0FD812903CCB700D2DB8D /* Order.swift */; };
+		0BF0FD852903D3F900D2DB8D /* HistoryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BF0FD842903D3F900D2DB8D /* HistoryVC.swift */; };
+		0BF0FD882903D69100D2DB8D /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BF0FD872903D69100D2DB8D /* DateExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,6 +70,9 @@
 		0BB796182903AC4700E280BB /* CartVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartVC.swift; sourceTree = "<group>"; };
 		0BF0FD7E2903CB1B00D2DB8D /* RealmManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmManager.swift; sourceTree = "<group>"; };
 		0BF0FD812903CCB700D2DB8D /* Order.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Order.swift; sourceTree = "<group>"; };
+		0BF0FD842903D3F900D2DB8D /* HistoryVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryVC.swift; sourceTree = "<group>"; };
+		0BF0FD872903D69100D2DB8D /* DateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
+		0BF1FBEC2903D7E10070C02F /* HistoryDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryDetailVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -141,11 +146,13 @@
 		0B767A8029017D7C00B819A5 /* JKO_Project */ = {
 			isa = PBXGroup;
 			children = (
+				0BF0FD862903D64F00D2DB8D /* Extensions */,
 				0BB796142903A84400E280BB /* Manager */,
 				0B767AB42902D8DE00B819A5 /* JSON */,
 				0B5753BA2902DB20004BF12F /* Commodity */,
 				0BB796172903AC2B00E280BB /* Cart */,
 				0B50EB3D2903B437001D0624 /* Payment */,
+				0BF0FD832903D3E300D2DB8D /* History */,
 				0B767A8129017D7C00B819A5 /* AppDelegate.swift */,
 				0B767A8329017D7C00B819A5 /* SceneDelegate.swift */,
 				0B767A8A29017D8000B819A5 /* Assets.xcassets */,
@@ -219,6 +226,23 @@
 				0BF0FD812903CCB700D2DB8D /* Order.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		0BF0FD832903D3E300D2DB8D /* History */ = {
+			isa = PBXGroup;
+			children = (
+				0BF0FD842903D3F900D2DB8D /* HistoryVC.swift */,
+				0BF1FBEC2903D7E10070C02F /* HistoryDetailVC.swift */,
+			);
+			path = History;
+			sourceTree = "<group>";
+		};
+		0BF0FD862903D64F00D2DB8D /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				0BF0FD872903D69100D2DB8D /* DateExtension.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -363,9 +387,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				0B767A8629017D7C00B819A5 /* CommodityListVC.swift in Sources */,
+				0BF0FD852903D3F900D2DB8D /* HistoryVC.swift in Sources */,
 				0BB796132903A26200E280BB /* CommodityDetailVC.swift in Sources */,
 				0BB796192903AC4700E280BB /* CartVC.swift in Sources */,
 				0BB796162903A85400E280BB /* CartManager.swift in Sources */,
+				0BF0FD882903D69100D2DB8D /* DateExtension.swift in Sources */,
 				0BF0FD822903CCB700D2DB8D /* Order.swift in Sources */,
 				0B50EB3F2903B44B001D0624 /* PaymentVC.swift in Sources */,
 				0B5753BC2902DB49004BF12F /* GeneralCommodity.swift in Sources */,

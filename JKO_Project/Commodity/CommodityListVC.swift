@@ -46,7 +46,8 @@ class CommodityListVC: UIViewController {
     }
     
     @objc private func historyTapped() {
-        
+        let vc = HistoryVC()
+        navigationController?.pushViewController(vc, animated: true)
     }
     
     private func setupUI() {
