@@ -62,6 +62,7 @@ extension CommodityListVC: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: CommodityListCell.cellId, for: indexPath) as! CommodityListCell
+        cell.selectionStyle = .none
         cell.commodity = items[indexPath.item]
         return cell
     }

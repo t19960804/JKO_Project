@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0B50EB3F2903B44B001D0624 /* PaymentVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B50EB3E2903B44B001D0624 /* PaymentVC.swift */; };
 		0B5753BC2902DB49004BF12F /* GeneralCommodity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B5753BB2902DB49004BF12F /* GeneralCommodity.swift */; };
 		0B5753BF2902DC18004BF12F /* LBTATools in Frameworks */ = {isa = PBXBuildFile; productRef = 0B5753BE2902DC18004BF12F /* LBTATools */; };
 		0B767A8229017D7C00B819A5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B767A8129017D7C00B819A5 /* AppDelegate.swift */; };
@@ -43,6 +44,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0B50EB3E2903B44B001D0624 /* PaymentVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentVC.swift; sourceTree = "<group>"; };
 		0B5753BB2902DB49004BF12F /* GeneralCommodity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralCommodity.swift; sourceTree = "<group>"; };
 		0B767A7E29017D7C00B819A5 /* JKO_Project.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JKO_Project.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0B767A8129017D7C00B819A5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -90,6 +92,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0B50EB3D2903B437001D0624 /* Payment */ = {
+			isa = PBXGroup;
+			children = (
+				0B50EB3E2903B44B001D0624 /* PaymentVC.swift */,
+			);
+			path = Payment;
+			sourceTree = "<group>";
+		};
 		0B5753BA2902DB20004BF12F /* Commodity */ = {
 			isa = PBXGroup;
 			children = (
@@ -128,6 +138,7 @@
 				0B767AB42902D8DE00B819A5 /* JSON */,
 				0B5753BA2902DB20004BF12F /* Commodity */,
 				0BB796172903AC2B00E280BB /* Cart */,
+				0B50EB3D2903B437001D0624 /* Payment */,
 				0B767A8129017D7C00B819A5 /* AppDelegate.swift */,
 				0B767A8329017D7C00B819A5 /* SceneDelegate.swift */,
 				0B767A8A29017D8000B819A5 /* Assets.xcassets */,
@@ -337,6 +348,7 @@
 				0BB796132903A26200E280BB /* CommodityDetailVC.swift in Sources */,
 				0BB796192903AC4700E280BB /* CartVC.swift in Sources */,
 				0BB796162903A85400E280BB /* CartManager.swift in Sources */,
+				0B50EB3F2903B44B001D0624 /* PaymentVC.swift in Sources */,
 				0B5753BC2902DB49004BF12F /* GeneralCommodity.swift in Sources */,
 				0BB7961029039BB600E280BB /* CommodityListCell.swift in Sources */,
 				0B767A8229017D7C00B819A5 /* AppDelegate.swift in Sources */,

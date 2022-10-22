@@ -44,7 +44,6 @@ class CommodityDetailVC: UIViewController {
         print("立即購買")
     }
     @objc private func addToCartTapped() {
-        print("加入購物車")
         hud.show(in: view, animated: true)
         CartManager.shared.add([self.commodity])
         hud.dismiss(afterDelay: 1.5)

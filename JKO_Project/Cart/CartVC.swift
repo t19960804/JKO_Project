@@ -9,6 +9,7 @@ class CartVC: UIViewController {
         tb.dataSource = self
         return tb
     }()
+    var checkStatus = Array(repeating: false, count: CartManager.shared.currentCommodities.count)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,7 +24,8 @@ class CartVC: UIViewController {
     }
     
     @objc private func settleTapped() {
-        print("結算")
+        let vc = PaymentVC()
+        navigationController?.pushViewController(vc, animated: true)
     }
     
     private func setupUI() {
@@ -39,12 +41,23 @@ extension CartVC: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: CommodityListCell.cellId, for: indexPath) as! CommodityListCell
+        cell.selectionStyle = .none
         let items = CartManager.shared.currentCommodities
         cell.commodity = items[indexPath.item]
+        
+        let isChecked = checkStatus[indexPath.item]
+        cell.accessoryType = isChecked ? .checkmark : .none
         return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 90
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let cell = tableView.cellForRow(at: indexPath)
+        let isChecked = checkStatus[indexPath.item]
+        checkStatus[indexPath.item] = !isChecked
+        cell?.accessoryType = checkStatus[indexPath.item] ? .checkmark : .none
     }
 }
