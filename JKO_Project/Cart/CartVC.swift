@@ -1,5 +1,6 @@
 import UIKit
 import LBTATools
+import JGProgressHUD
 
 class CartVC: UIViewController {
     private lazy var tableView: UITableView = {
@@ -8,6 +9,14 @@ class CartVC: UIViewController {
         tb.delegate = self
         tb.dataSource = self
         return tb
+    }()
+    
+    private let hud: JGProgressHUD = {
+        let hud = JGProgressHUD()
+        let view = JGProgressHUDErrorIndicatorView()
+        hud.indicatorView = view
+        hud.textLabel.text = "請勾選一項商品"
+        return hud
     }()
     
     private var checkStatus = Array(repeating: false, count: CartManager.shared.getCurrentCommodities().count)
@@ -37,6 +46,11 @@ class CartVC: UIViewController {
                     itemsChecked.append(item)
                 }
             }
+        }
+        if itemsChecked.isEmpty {
+            hud.show(in: self.view, animated: true)
+            hud.dismiss(afterDelay: 1)
+            return
         }
         let vc = PaymentVC(items: itemsChecked)
         navigationController?.pushViewController(vc, animated: true)
