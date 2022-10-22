@@ -56,7 +56,10 @@ extension CartVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: CommodityListCell.cellId, for: indexPath) as! CommodityListCell
         cell.selectionStyle = .none
-        cell.commodity = CartManager.shared.getCurrentCommodityAt(indexPath.item)?.item
+        if let item = CartManager.shared.getCurrentCommodityAt(indexPath.item)?.item {
+            let vm = CommodityListCellViewModel(commodity: item)
+            cell.vm = vm
+        }
         
         let isChecked = checkStatus[indexPath.item]
         cell.accessoryType = isChecked ? .checkmark : .none

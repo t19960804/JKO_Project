@@ -10,16 +10,13 @@ class CommodityListCell: UITableViewCell {
     private let priceLabel = UILabel(text: "", font: .boldSystemFont(ofSize: 12), textColor: .black, textAlignment: .left, numberOfLines: 1)
     private let dateLabel = UILabel(text: "", font: .boldSystemFont(ofSize: 11), textColor: .black, textAlignment: .right, numberOfLines: 1)
     
-    var commodity: GeneralCommidity? {
+    var vm: CommodityListCellViewModel? {
         didSet {
-            commodityImageView.image = UIImage(named: commodity?.imageName ?? "")
-            nameLabel.text = commodity?.name
-            descriptionLabel.text = commodity?.descript
-            priceLabel.text = "$\(commodity?.price ?? -1)"
-
-            let timeIntervalSince1970 = commodity?.createAt ?? 0
-            let timeInterval = TimeInterval(timeIntervalSince1970)
-            dateLabel.text = timeInterval.toString(format: "yyyy/MM/dd")
+            commodityImageView.image = vm!.commodityImage
+            nameLabel.text = vm!.commodityName
+            descriptionLabel.text = vm!.commodityDescription
+            priceLabel.text = vm!.commodityPrice
+            dateLabel.text = vm!.commodityCreateDate
         }
     }
     
