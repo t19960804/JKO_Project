@@ -35,6 +35,9 @@ class CommodityDetailVC: UIViewController {
     }
     
     private func setupNavBar() {
+        title = "商品詳情"
+        navigationController?.navigationBar.prefersLargeTitles = true
+        
         let buy = UIBarButtonItem(title: "立即購買", style: .plain, target: self, action: #selector(buyTapped))
         let addToCart = UIBarButtonItem(title: "加入購物車", style: .plain, target: self, action: #selector(addToCartTapped))
         navigationItem.rightBarButtonItems = [addToCart, buy]

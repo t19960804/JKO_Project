@@ -19,12 +19,23 @@ class CartVC: UIViewController {
     }
     
     private func setupNavBar() {
+        title = "購物車"
+        navigationController?.navigationBar.prefersLargeTitles = true
+        
         let settle = UIBarButtonItem(title: "結算", style: .plain, target: self, action: #selector(settleTapped))
         navigationItem.rightBarButtonItems = [settle]
     }
     
     @objc private func settleTapped() {
-        let vc = PaymentVC()
+        var itemsChecked = [GeneralCommidity]()
+        for i in 0..<checkStatus.count {
+            let isChecked = checkStatus[i]
+            if isChecked {
+                let commodity = CartManager.shared.currentCommodities[i]
+                itemsChecked.append(commodity)
+            }
+        }
+        let vc = PaymentVC(items: itemsChecked)
         navigationController?.pushViewController(vc, animated: true)
     }
     
