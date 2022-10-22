@@ -69,7 +69,6 @@ extension CartVC: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: CommodityListCell.cellId, for: indexPath) as! CommodityListCell
-        cell.selectionStyle = .none
         if let item = CartManager.shared.getCurrentCommodityAt(indexPath.item)?.item {
             let vm = CommodityListCellViewModel(commodity: item)
             cell.vm = vm

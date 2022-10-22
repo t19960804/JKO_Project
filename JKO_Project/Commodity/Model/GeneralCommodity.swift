@@ -2,7 +2,7 @@ import Foundation
 import RealmSwift
 
 class CommoditiesCollection: Codable {
-    let items: [GeneralCommidity]
+    var items: [GeneralCommidity]
 }
 
 class GeneralCommidity: Object, Codable {

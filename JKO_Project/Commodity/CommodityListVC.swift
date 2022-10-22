@@ -1,5 +1,6 @@
 import UIKit
 import LBTATools
+import Combine
 
 class CommodityListVC: UIViewController {
     private lazy var tableView: UITableView = {
@@ -10,33 +11,26 @@ class CommodityListVC: UIViewController {
         return tb
     }()
     
-    private var items = [GeneralCommidity]()
+    private let vm = CommodityListViewModel()
+    
+    private var dataSourceSubscription: AnyCancellable?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
-        fetchData()
         setupNavBar()
         setupUI()
+        setupSubscriptions()
+        vm.fetchData()
     }
-
-    private func fetchData() {
-        guard let url = Bundle.main.url(forResource: "TestData", withExtension: "json") else {
-            print("Error - Can't get json")
-            return
-        }
-        do {
-            let data = try Data(contentsOf: url)
-            do {
-                let collection = try JSONDecoder().decode(CommoditiesCollection.self, from: data)
-                self.items = collection.items
-                self.items.sort(by: { $0.createAt > $1.createAt })
-            } catch {
-                print("Error - Decode Failed:\(error)")
+    
+    fileprivate func setupSubscriptions(){
+        dataSourceSubscription = vm.$items
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] _ in
+                guard let self = self else { return }
+                self.tableView.reloadData()
             }
-        } catch {
-            print("Error - Get Data Failed:\(error)")
-        }
     }
     
     private func setupNavBar() {
@@ -66,13 +60,12 @@ class CommodityListVC: UIViewController {
 
 extension CommodityListVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        items.count
+        return vm.items.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: CommodityListCell.cellId, for: indexPath) as! CommodityListCell
-        cell.selectionStyle = .none
-        let commodity = items[indexPath.item]
+        let commodity = vm.items[indexPath.item]
         let vm = CommodityListCellViewModel(commodity: commodity)
         cell.vm = vm
         return cell
@@ -83,7 +76,7 @@ extension CommodityListVC: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let vc = CommodityDetailVC(commodity: items[indexPath.item])
+        let vc = CommodityDetailVC(commodity: vm.items[indexPath.item])
         navigationController?.pushViewController(vc, animated: true)
     }
 }

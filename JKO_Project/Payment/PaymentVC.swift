@@ -90,7 +90,6 @@ extension PaymentVC: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: CommodityListCell.cellId, for: indexPath) as! CommodityListCell
-        cell.selectionStyle = .none
         let item = items[indexPath.item]
         let vm = CommodityListCellViewModel(commodity: item)
         cell.vm = vm

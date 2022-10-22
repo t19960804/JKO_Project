@@ -30,6 +30,7 @@ class CommodityListCell: UITableViewCell {
     }
     
     private func setupUI() {
+        selectionStyle = .none
         addSubview(commodityImageView)
         addSubview(nameLabel)
         addSubview(descriptionLabel)
