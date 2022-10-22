@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0B50EB3F2903B44B001D0624 /* PaymentVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B50EB3E2903B44B001D0624 /* PaymentVC.swift */; };
 		0B5753BC2902DB49004BF12F /* GeneralCommodity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B5753BB2902DB49004BF12F /* GeneralCommodity.swift */; };
 		0B5753BF2902DC18004BF12F /* LBTATools in Frameworks */ = {isa = PBXBuildFile; productRef = 0B5753BE2902DC18004BF12F /* LBTATools */; };
 		0B767A8229017D7C00B819A5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B767A8129017D7C00B819A5 /* AppDelegate.swift */; };
@@ -20,6 +21,9 @@
 		0B767AB62902D8F600B819A5 /* TestData.json in Resources */ = {isa = PBXBuildFile; fileRef = 0B767AB52902D8F600B819A5 /* TestData.json */; };
 		0BB7961029039BB600E280BB /* CommodityListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB7960F29039BB600E280BB /* CommodityListCell.swift */; };
 		0BB796132903A26200E280BB /* CommodityDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB796122903A26200E280BB /* CommodityDetailVC.swift */; };
+		0BB796162903A85400E280BB /* CartManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB796152903A85400E280BB /* CartManager.swift */; };
+		0BB796192903AC4700E280BB /* CartVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB796182903AC4700E280BB /* CartVC.swift */; };
+		0BB7961C2903AE2100E280BB /* JGProgressHUD in Frameworks */ = {isa = PBXBuildFile; productRef = 0BB7961B2903AE2100E280BB /* JGProgressHUD */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +44,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0B50EB3E2903B44B001D0624 /* PaymentVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentVC.swift; sourceTree = "<group>"; };
 		0B5753BB2902DB49004BF12F /* GeneralCommodity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralCommodity.swift; sourceTree = "<group>"; };
 		0B767A7E29017D7C00B819A5 /* JKO_Project.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JKO_Project.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0B767A8129017D7C00B819A5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -56,6 +61,8 @@
 		0B767AB52902D8F600B819A5 /* TestData.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = TestData.json; sourceTree = "<group>"; };
 		0BB7960F29039BB600E280BB /* CommodityListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommodityListCell.swift; sourceTree = "<group>"; };
 		0BB796122903A26200E280BB /* CommodityDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommodityDetailVC.swift; sourceTree = "<group>"; };
+		0BB796152903A85400E280BB /* CartManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartManager.swift; sourceTree = "<group>"; };
+		0BB796182903AC4700E280BB /* CartVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +70,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0BB7961C2903AE2100E280BB /* JGProgressHUD in Frameworks */,
 				0B5753BF2902DC18004BF12F /* LBTATools in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -84,6 +92,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0B50EB3D2903B437001D0624 /* Payment */ = {
+			isa = PBXGroup;
+			children = (
+				0B50EB3E2903B44B001D0624 /* PaymentVC.swift */,
+			);
+			path = Payment;
+			sourceTree = "<group>";
+		};
 		0B5753BA2902DB20004BF12F /* Commodity */ = {
 			isa = PBXGroup;
 			children = (
@@ -118,8 +134,11 @@
 		0B767A8029017D7C00B819A5 /* JKO_Project */ = {
 			isa = PBXGroup;
 			children = (
+				0BB796142903A84400E280BB /* Manager */,
 				0B767AB42902D8DE00B819A5 /* JSON */,
 				0B5753BA2902DB20004BF12F /* Commodity */,
+				0BB796172903AC2B00E280BB /* Cart */,
+				0B50EB3D2903B437001D0624 /* Payment */,
 				0B767A8129017D7C00B819A5 /* AppDelegate.swift */,
 				0B767A8329017D7C00B819A5 /* SceneDelegate.swift */,
 				0B767A8A29017D8000B819A5 /* Assets.xcassets */,
@@ -170,6 +189,22 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		0BB796142903A84400E280BB /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				0BB796152903A85400E280BB /* CartManager.swift */,
+			);
+			path = Manager;
+			sourceTree = "<group>";
+		};
+		0BB796172903AC2B00E280BB /* Cart */ = {
+			isa = PBXGroup;
+			children = (
+				0BB796182903AC4700E280BB /* CartVC.swift */,
+			);
+			path = Cart;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -188,6 +223,7 @@
 			name = JKO_Project;
 			packageProductDependencies = (
 				0B5753BE2902DC18004BF12F /* LBTATools */,
+				0BB7961B2903AE2100E280BB /* JGProgressHUD */,
 			);
 			productName = JKO_Project;
 			productReference = 0B767A7E29017D7C00B819A5 /* JKO_Project.app */;
@@ -263,6 +299,7 @@
 			mainGroup = 0B767A7529017D7C00B819A5;
 			packageReferences = (
 				0B5753BD2902DC18004BF12F /* XCRemoteSwiftPackageReference "LBTATools" */,
+				0BB7961A2903AE2100E280BB /* XCRemoteSwiftPackageReference "JGProgressHUD" */,
 			);
 			productRefGroup = 0B767A7F29017D7C00B819A5 /* Products */;
 			projectDirPath = "";
@@ -309,6 +346,9 @@
 			files = (
 				0B767A8629017D7C00B819A5 /* CommodityListVC.swift in Sources */,
 				0BB796132903A26200E280BB /* CommodityDetailVC.swift in Sources */,
+				0BB796192903AC4700E280BB /* CartVC.swift in Sources */,
+				0BB796162903A85400E280BB /* CartManager.swift in Sources */,
+				0B50EB3F2903B44B001D0624 /* PaymentVC.swift in Sources */,
 				0B5753BC2902DB49004BF12F /* GeneralCommodity.swift in Sources */,
 				0BB7961029039BB600E280BB /* CommodityListCell.swift in Sources */,
 				0B767A8229017D7C00B819A5 /* AppDelegate.swift in Sources */,
@@ -658,6 +698,14 @@
 				kind = branch;
 			};
 		};
+		0BB7961A2903AE2100E280BB /* XCRemoteSwiftPackageReference "JGProgressHUD" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/JonasGessner/JGProgressHUD";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -665,6 +713,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 0B5753BD2902DC18004BF12F /* XCRemoteSwiftPackageReference "LBTATools" */;
 			productName = LBTATools;
+		};
+		0BB7961B2903AE2100E280BB /* JGProgressHUD */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0BB7961A2903AE2100E280BB /* XCRemoteSwiftPackageReference "JGProgressHUD" */;
+			productName = JGProgressHUD;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
