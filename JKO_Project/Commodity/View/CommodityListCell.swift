@@ -20,10 +20,7 @@ class CommodityListCell: UITableViewCell {
             let timeIntervalSince1970 = commodity?.createAt ?? 0
             let timeInterval = TimeInterval(timeIntervalSince1970)
             let date = Date(timeIntervalSince1970: timeInterval)
-            let dateFormatter = DateFormatter()
-            dateFormatter.dateFormat = "yyyy/MM/dd HH:mm"
-            let dayString = dateFormatter.string(from: date)
-            dateLabel.text = dayString
+            dateLabel.text = date.toString(format: "yyyy/MM/dd HH:mm")
         }
     }
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
