@@ -10,7 +10,7 @@ class CartVC: UIViewController {
         return tb
     }()
     
-    private var checkStatus = Array(repeating: false, count: CartManager.shared.currentCommodities.count)
+    private var checkStatus = Array(repeating: false, count: CartManager.shared.getNumberOfCurrentCommodities())
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,8 +32,9 @@ class CartVC: UIViewController {
         for i in 0..<checkStatus.count {
             let isChecked = checkStatus[i]
             if isChecked {
-                let commodity = CartManager.shared.currentCommodities[i]
-                itemsChecked.append(commodity)
+                if let commodity = CartManager.shared.getCurrentCommodityAt(i) {
+                    itemsChecked.append(commodity)
+                }
             }
         }
         let vc = PaymentVC(items: itemsChecked)
@@ -48,14 +49,13 @@ class CartVC: UIViewController {
 
 extension CartVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return CartManager.shared.currentCommodities.count
+        return CartManager.shared.getNumberOfCurrentCommodities()
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: CommodityListCell.cellId, for: indexPath) as! CommodityListCell
         cell.selectionStyle = .none
-        let items = CartManager.shared.currentCommodities
-        cell.commodity = items[indexPath.item]
+        cell.commodity = CartManager.shared.getCurrentCommodityAt(indexPath.item)
         
         let isChecked = checkStatus[indexPath.item]
         cell.accessoryType = isChecked ? .checkmark : .none
