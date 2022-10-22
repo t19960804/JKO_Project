@@ -4,7 +4,7 @@ import RealmSwift
 import JGProgressHUD
 
 class PaymentVC: UIViewController {
-    lazy var tableView: UITableView = {
+    private lazy var tableView: UITableView = {
         let tb = UITableView()
         tb.register(CommodityListCell.self, forCellReuseIdentifier: CommodityListCell.cellId)
         tb.delegate = self
@@ -12,7 +12,7 @@ class PaymentVC: UIViewController {
         return tb
     }()
     
-    let hud: JGProgressHUD = {
+    private let hud: JGProgressHUD = {
         let hud = JGProgressHUD()
         let view = JGProgressHUDSuccessIndicatorView()
         hud.indicatorView = view
@@ -94,9 +94,7 @@ extension PaymentVC: UITableViewDelegate, UITableViewDataSource {
         let footer = UIView()
         let titleLabel = UILabel()
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
-        titleLabel.numberOfLines = 0
-        titleLabel.lineBreakMode = .byWordWrapping
-        titleLabel.text  = "總價格: \(getTotalPrice())"
+        titleLabel.text  = "$\(getTotalPrice())"
         footer.addSubview(titleLabel)
         titleLabel.centerInSuperview()
         return footer

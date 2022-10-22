@@ -4,7 +4,7 @@ import RealmSwift
 
 class HistoryDetailVC: UIViewController {
     private var items: List<GeneralCommidity>!
-    lazy var tableView: UITableView = {
+    private lazy var tableView: UITableView = {
         let tb = UITableView()
         tb.register(UITableViewCell.self, forCellReuseIdentifier: "cellId")
         tb.delegate = self

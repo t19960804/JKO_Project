@@ -2,14 +2,15 @@ import UIKit
 import LBTATools
 
 class CartVC: UIViewController {
-    lazy var tableView: UITableView = {
+    private lazy var tableView: UITableView = {
         let tb = UITableView()
         tb.register(CommodityListCell.self, forCellReuseIdentifier: CommodityListCell.cellId)
         tb.delegate = self
         tb.dataSource = self
         return tb
     }()
-    var checkStatus = Array(repeating: false, count: CartManager.shared.currentCommodities.count)
+    
+    private var checkStatus = Array(repeating: false, count: CartManager.shared.currentCommodities.count)
     
     override func viewDidLoad() {
         super.viewDidLoad()

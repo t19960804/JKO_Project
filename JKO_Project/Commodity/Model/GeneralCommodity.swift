@@ -4,6 +4,7 @@ import RealmSwift
 class CommoditiesCollection: Codable {
     let items: [GeneralCommidity]
 }
+
 class GeneralCommidity: Object, Codable {
     @Persisted var name: String
     @Persisted var descript: String

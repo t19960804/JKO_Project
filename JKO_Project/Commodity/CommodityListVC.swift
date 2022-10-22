@@ -2,35 +2,42 @@ import UIKit
 import LBTATools
 
 class CommodityListVC: UIViewController {
-    lazy var tableView: UITableView = {
+    private lazy var tableView: UITableView = {
         let tb = UITableView()
         tb.register(CommodityListCell.self, forCellReuseIdentifier: CommodityListCell.cellId)
         tb.delegate = self
         tb.dataSource = self
         return tb
     }()
-    var items = [GeneralCommidity]()
+    
+    private var items = [GeneralCommidity]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
-        if let url = Bundle.main.url(forResource: "TestData", withExtension: "json") {
-            do {
-                let data = try Data(contentsOf: url)
-                do {
-                    let collection = try JSONDecoder().decode(CommoditiesCollection.self, from: data)
-                    self.items = collection.items
-                } catch {
-                    print("Error - Decode Failed:\(error)")
-                }
-            } catch {
-                print("Error - Get Data Failed:\(error)")
-            }
-        }
+        fetchData()
         setupNavBar()
         setupUI()
     }
 
+    private func fetchData() {
+        guard let url = Bundle.main.url(forResource: "TestData", withExtension: "json") else {
+            print("Error - Can't get json")
+            return
+        }
+        do {
+            let data = try Data(contentsOf: url)
+            do {
+                let collection = try JSONDecoder().decode(CommoditiesCollection.self, from: data)
+                self.items = collection.items
+            } catch {
+                print("Error - Decode Failed:\(error)")
+            }
+        } catch {
+            print("Error - Get Data Failed:\(error)")
+        }
+    }
+    
     private func setupNavBar() {
         title = "商品列表"
         navigationController?.navigationBar.prefersLargeTitles = true

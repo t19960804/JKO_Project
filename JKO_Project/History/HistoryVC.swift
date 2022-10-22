@@ -2,7 +2,7 @@ import UIKit
 import LBTATools
 
 class HistoryVC: UIViewController {
-    lazy var tableView: UITableView = {
+    private lazy var tableView: UITableView = {
         let tb = UITableView(frame: .zero, style: .insetGrouped)
         tb.register(CommodityListCell.self, forCellReuseIdentifier: CommodityListCell.cellId)
         tb.delegate = self
@@ -64,7 +64,7 @@ extension HistoryVC: UITableViewDelegate, UITableViewDataSource {
         let timeIntervalSince1970 = order.createAt
         let timeInterval = TimeInterval(timeIntervalSince1970)
         let date = Date(timeIntervalSince1970: timeInterval)
-        titleLabel.text = date.toString(format: "yyyy/MM/dd HH:mm") + "\n總價格:\(order.totalPrice)"
+        titleLabel.text = date.toString(format: "yyyy/MM/dd HH:mm") + "\n$\(order.totalPrice)"
         header.addSubview(titleLabel)
         titleLabel.centerInSuperview()
         return header

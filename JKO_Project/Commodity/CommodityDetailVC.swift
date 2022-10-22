@@ -3,13 +3,15 @@ import LBTATools
 import JGProgressHUD
 
 class CommodityDetailVC: UIViewController {
-    let commodityImageView = UIImageView(image: nil)
-    let nameLabel = UILabel(text: "", font: .boldSystemFont(ofSize: 14), textColor: .black, textAlignment: .left, numberOfLines: 0)
-    let descriptionLabel = UILabel(text: "", font: .boldSystemFont(ofSize: 13), textColor: .black, textAlignment: .left, numberOfLines: 0)
-    let priceLabel = UILabel(text: "", font: .boldSystemFont(ofSize: 12), textColor: .black, textAlignment: .left, numberOfLines: 0)
-    let dateLabel = UILabel(text: "", font: .boldSystemFont(ofSize: 11), textColor: .black, textAlignment: .right, numberOfLines: 0)
+    private let commodityImageView = UIImageView(image: nil)
     
-    let hud: JGProgressHUD = {
+    private let nameLabel = UILabel(text: "", font: .boldSystemFont(ofSize: 14), textColor: .black, textAlignment: .left, numberOfLines: 0)
+    
+    private let descriptionLabel = UILabel(text: "", font: .boldSystemFont(ofSize: 13), textColor: .black, textAlignment: .left, numberOfLines: 0)
+    
+    private let priceLabel = UILabel(text: "", font: .boldSystemFont(ofSize: 12), textColor: .black, textAlignment: .left, numberOfLines: 0)
+    
+    private let hud: JGProgressHUD = {
         let hud = JGProgressHUD()
         let view = JGProgressHUDSuccessIndicatorView()
         hud.indicatorView = view
@@ -79,14 +81,6 @@ class CommodityDetailVC: UIViewController {
         commodityImageView.image = UIImage(named: commodity.imageName)
         nameLabel.text = commodity.name
         descriptionLabel.text = commodity.descript
-        priceLabel.text = "\(commodity.price)"
-
-        let timeIntervalSince1970 = commodity.createAt
-        let timeInterval = TimeInterval(timeIntervalSince1970)
-        let date = Date(timeIntervalSince1970: timeInterval)
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy/MM/dd HH:mm"
-        let dayString = dateFormatter.string(from: date)
-        dateLabel.text = dayString
+        priceLabel.text = "$\(commodity.price)"
     }
 }

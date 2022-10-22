@@ -4,25 +4,26 @@ import LBTATools
 class CommodityListCell: UITableViewCell {
     static let cellId = "CommodityListCell"
     
-    let commodityImageView = UIImageView(image: nil)
-    let nameLabel = UILabel(text: "", font: .boldSystemFont(ofSize: 14), textColor: .black, textAlignment: .left, numberOfLines: 1)
-    let descriptionLabel = UILabel(text: "", font: .boldSystemFont(ofSize: 13), textColor: .black, textAlignment: .left, numberOfLines: 1)
-    let priceLabel = UILabel(text: "", font: .boldSystemFont(ofSize: 12), textColor: .black, textAlignment: .left, numberOfLines: 1)
-    let dateLabel = UILabel(text: "", font: .boldSystemFont(ofSize: 11), textColor: .black, textAlignment: .right, numberOfLines: 1)
+    private let commodityImageView = UIImageView(image: nil)
+    private let nameLabel = UILabel(text: "", font: .boldSystemFont(ofSize: 14), textColor: .black, textAlignment: .left, numberOfLines: 1)
+    private let descriptionLabel = UILabel(text: "", font: .boldSystemFont(ofSize: 13), textColor: .black, textAlignment: .left, numberOfLines: 1)
+    private let priceLabel = UILabel(text: "", font: .boldSystemFont(ofSize: 12), textColor: .black, textAlignment: .left, numberOfLines: 1)
+    private let dateLabel = UILabel(text: "", font: .boldSystemFont(ofSize: 11), textColor: .black, textAlignment: .right, numberOfLines: 1)
     
     var commodity: GeneralCommidity? {
         didSet {
             commodityImageView.image = UIImage(named: commodity?.imageName ?? "")
             nameLabel.text = commodity?.name
             descriptionLabel.text = commodity?.descript
-            priceLabel.text = "\(commodity?.price ?? -1)"
+            priceLabel.text = "$\(commodity?.price ?? -1)"
 
             let timeIntervalSince1970 = commodity?.createAt ?? 0
             let timeInterval = TimeInterval(timeIntervalSince1970)
             let date = Date(timeIntervalSince1970: timeInterval)
-            dateLabel.text = date.toString(format: "yyyy/MM/dd HH:mm")
+            dateLabel.text = date.toString(format: "yyyy/MM/dd")
         }
     }
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setupUI()
