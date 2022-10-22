@@ -35,6 +35,9 @@ class CommodityDetailVC: UIViewController {
     }
     
     private func setupNavBar() {
+        title = "商品詳情"
+        navigationController?.navigationBar.prefersLargeTitles = true
+        
         let buy = UIBarButtonItem(title: "立即購買", style: .plain, target: self, action: #selector(buyTapped))
         let addToCart = UIBarButtonItem(title: "加入購物車", style: .plain, target: self, action: #selector(addToCartTapped))
         navigationItem.rightBarButtonItems = [addToCart, buy]
@@ -45,7 +48,9 @@ class CommodityDetailVC: UIViewController {
     }
     @objc private func addToCartTapped() {
         hud.show(in: view, animated: true)
+        
         CartManager.shared.add([self.commodity])
+        
         hud.dismiss(afterDelay: 1.5)
     }
     
@@ -70,7 +75,7 @@ class CommodityDetailVC: UIViewController {
         
         commodityImageView.image = UIImage(named: commodity.imageName)
         nameLabel.text = commodity.name
-        descriptionLabel.text = commodity.description
+        descriptionLabel.text = commodity.descript
         priceLabel.text = "\(commodity.price)"
 
         let timeIntervalSince1970 = commodity.createAt

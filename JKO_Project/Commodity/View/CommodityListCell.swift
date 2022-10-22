@@ -14,7 +14,7 @@ class CommodityListCell: UITableViewCell {
         didSet {
             commodityImageView.image = UIImage(named: commodity?.imageName ?? "")
             nameLabel.text = commodity?.name
-            descriptionLabel.text = commodity?.description
+            descriptionLabel.text = commodity?.descript
             priceLabel.text = "\(commodity?.price ?? -1)"
 
             let timeIntervalSince1970 = commodity?.createAt ?? 0
