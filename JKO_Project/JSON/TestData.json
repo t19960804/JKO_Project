@@ -62,6 +62,20 @@
       "price":52000,
       "createAt":1666388800,
       "imageName":"iMac"
+    },
+    {
+      "name":"Mac mini",
+      "descript":"Mac mini 具備兩個快到驚人的Thunderbolt / USB 4 埠、兩個USB-A 埠、HDMI、Wi-Fi 6 和Gigabit 乙太網路，無論大事小事都能搞定",
+      "price":28000,
+      "createAt":1666392400,
+      "imageName":"MacMini"
+    },
+    {
+      "name":"Mac Studio",
+      "descript":"出奇精巧而緊密,廣泛多樣的連結能力,洶湧澎湃的效能表現,準備好大開眼界？",
+      "price":120000,
+      "createAt":1666396000,
+      "imageName":"MacStudio"
     }
   ]
 }
