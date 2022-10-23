@@ -5,7 +5,7 @@ import JGProgressHUD
 
 class PaymentVC: UIViewController {
     private lazy var tableView: UITableView = {
-        let tb = UITableView()
+        let tb = UITableView(frame: .zero, style: .insetGrouped)
         tb.register(CommodityListCell.self, forCellReuseIdentifier: CommodityListCell.cellId)
         tb.delegate = self
         tb.dataSource = self
@@ -90,17 +90,17 @@ extension PaymentVC: UITableViewDelegate, UITableViewDataSource {
         return CommodityListCell.height
     }
     
-    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-        let footer = UIView()
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let header = UIView()
         let titleLabel = UILabel()
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         titleLabel.text  = "$\(order.totalPrice)"
-        footer.addSubview(titleLabel)
+        header.addSubview(titleLabel)
         titleLabel.centerInSuperview()
-        return footer
+        return header
     }
 
-    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 50
     }
 }
