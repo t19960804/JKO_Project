@@ -10,7 +10,7 @@ class CommodityListCellViewModel: Object {
     @Persisted var commodityPriceString: String
     @Persisted var commodityCreateDateString: String
     
-    convenience init(commodity: GeneralCommidity) {
+    convenience init(commodity: JKO_Commidity) {
         self.init()
         let image = UIImage(named: commodity.imageName) ?? UIImage(named: "question")!
         let imageData = image.pngData() ?? Data()
