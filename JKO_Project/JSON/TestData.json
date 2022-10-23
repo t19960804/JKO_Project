@@ -2,17 +2,66 @@
   "items": [
     {
       "name":"AirPods Pro (第 2 代)",
-      "descript":"AirPods Pro (第 2 代) 經重新再造，讓「主動式降噪」效能提升最高可達 2 倍。「適應性通透模式」可減少外部噪音，「個人化空間音訊」則為你帶來更沉浸式的音效。充電一次，電池續航力最長可達 6 小時⁷。觸控控制，讓你輕輕滑動就可調整音量。MagSage 充電盒的精進，令人稱奇。支援「精確尋找」功能¹⁵、內建揚聲器並附有掛繩孔˄。",
+      "descript":"AirPods Pro (第 2 代) 經重新再造，讓「主動式降噪」效能提升最高可達 2 倍。「適應性通透模式」可減少外部噪音，「個人化空間音訊」則為你帶來更沉浸式的音效。充電一次，電池續航力最長可達 6 小時⁷。觸控控制，讓你輕輕滑動就可調整音量。MagSage 充電盒的精進，令人稱奇。支援「精確尋找」功能¹⁵、內建揚聲器並附有掛繩孔",
       "price":7500,
       "createAt":1666360000,
       "imageName":"AirPodsPro2"
     },
     {
       "name":"Apple Watch Ultra",
-      "descript":"航太等級鈦金屬錶殼，在重量與耐用性間取得完美平衡，並具備耐蝕度。",
+      "descript":"航太等級鈦金屬錶殼，在重量與耐用性間取得完美平衡，並具備耐蝕度",
       "price":26000,
       "createAt":1666363600,
       "imageName":"AppleWatchUltra"
+    },
+    {
+      "name":"12.9 吋 iPad Pro",
+      "descript":"精心設計的 12.9 吋 Liquid Retina XDR 顯示器，將極致鮮明、深邃黑色和各種精緻細節展露無遺。 十分適合觀看與編輯 HDR 照片和影片等高亮度、高對比度的內容",
+      "price":38000,
+      "createAt":1666367200,
+      "imageName":"ipad_pro"
+    },
+    {
+      "name":"iPhone14 Pro - 128G",
+      "descript":"iPhone 14 Pro 128GB 首度搭載4,800 萬畫素主鏡頭，配備先進的四合一像素感光元件，低光源攝影體驗更優秀，還能以高達4 倍的解析度拍攝ProRAW 照片。 電影模式支援4K HDR 的24fps 錄影，支援超穩定錄影的「動作模式」，無須輔助器材也能拍出很穩的畫面",
+      "price":35000,
+      "createAt":1666370800,
+      "imageName":"iPhone14"
+    },
+    {
+      "name":"AirTag",
+      "descript":"透過免額外付費鐫刻服務，創造出獨具你的個人風格的 AirTag；只在 Apple 提供",
+      "price":1000,
+      "createAt":1666374400,
+      "imageName":"airtag"
+    },
+    {
+      "name":"HomePod mini",
+      "descript":"讓房間彌漫 360 度的音樂。在家中各處放置 HomePod mini 揚聲器，走到哪裡都有豐富的多室音訊¹，還可提供「廣播」等功能",
+      "price":3000,
+      "createAt":1666378000,
+      "imageName":"homepod"
+    },
+    {
+      "name":"Apple TV 4K",
+      "descript":"觀看廣受好評的 Apple Originals 原﻿創作品，每月都有全新上線的節目和電﻿影",
+      "price":4500,
+      "createAt":1666381600,
+      "imageName":"appleTV"
+    },
+    {
+      "name":"AirPods Max",
+      "descript":"AirPods Max 結合了高傳真音質與業界頂尖的「主動式降噪」，帶給你難以媲美的聆聽體驗",
+      "price":18000,
+      "createAt":1666385200,
+      "imageName":"AirPodsMax"
+    },
+    {
+      "name":"藍色24吋iMac",
+      "descript":"Apple M1 晶片配備 8 核心 CPU 含 4 個效能核心與 4 個節能核心、8 核心 GPU 與 16 核心神經網路引擎",
+      "price":52000,
+      "createAt":1666388800,
+      "imageName":"iMac"
     }
   ]
 }
