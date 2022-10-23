@@ -3,6 +3,7 @@ import LBTATools
 
 class CommodityListCell: UITableViewCell {
     static let cellId = "CommodityListCell"
+    static let height: CGFloat = 90
     
     private let commodityImageView = UIImageView(image: nil)
     private let nameLabel = UILabel(text: "", font: .boldSystemFont(ofSize: 14), textColor: .black, textAlignment: .left, numberOfLines: 1)
