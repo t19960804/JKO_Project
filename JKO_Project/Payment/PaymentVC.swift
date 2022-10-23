@@ -20,11 +20,11 @@ class PaymentVC: UIViewController {
         return hud
     }()
     
-    private var items = [CommodityListCellViewModel]()
+    private var order: Order!
     
-    init(items: [CommodityListCellViewModel]) {
+    init(order: Order) {
         super.init(nibName: nil, bundle: nil)
-        self.items = items
+        self.order = order
     }
     
     required init?(coder: NSCoder) {
@@ -54,43 +54,30 @@ class PaymentVC: UIViewController {
     @objc private func confirmTapped() {
         hud.show(in: view, animated: true)
         
-        let itemList = List<CommodityListCellViewModel>()
-        itemList.append(objectsIn: items)
-        let order = Order()
-        order.items = itemList
-        order.createAt = Int(Date().timeIntervalSince1970)
-        order.totalPrice = getTotalPrice()
         RealmManager.shared.save(order)
-        for item in items {
+        for item in order.items {
             if let index = CartManager.shared.getCurrentCommodities().firstIndex(where: {
                 ($0.item?.commodityName == item.commodityName) && ($0.item?.commodityCreateDateString == item.commodityCreateDateString)
             }) {
                 CartManager.shared.deleteAt(index)
             }
         }
+        
         hud.dismiss(afterDelay: 1.5)
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.7, execute: {
             self.navigationController?.popToRootViewController(animated: true)
         })
     }
-    
-    private func getTotalPrice() -> Int {
-        var totalPrice = 0
-        items.forEach {
-            totalPrice += $0.commodityPrice
-        }
-        return totalPrice
-    }
 }
 
 extension PaymentVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return items.count
+        return order.items.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: CommodityListCell.cellId, for: indexPath) as! CommodityListCell
-        let item = items[indexPath.item]
+        let item = order.items[indexPath.item]
         cell.vm = item
         return cell
     }
@@ -103,7 +90,7 @@ extension PaymentVC: UITableViewDelegate, UITableViewDataSource {
         let footer = UIView()
         let titleLabel = UILabel()
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
-        titleLabel.text  = "$\(getTotalPrice())"
+        titleLabel.text  = "$\(order.getTotalPrice())"
         footer.addSubview(titleLabel)
         titleLabel.centerInSuperview()
         return footer

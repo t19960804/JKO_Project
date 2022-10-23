@@ -1,6 +1,7 @@
 import UIKit
 import LBTATools
 import JGProgressHUD
+import RealmSwift
 
 class CartVC: UIViewController {
     private lazy var tableView: UITableView = {
@@ -52,7 +53,10 @@ class CartVC: UIViewController {
             hud.dismiss(afterDelay: 1)
             return
         }
-        let vc = PaymentVC(items: itemsChecked)
+        let itemList = List<CommodityListCellViewModel>()
+        itemList.append(objectsIn: itemsChecked)
+        let order = Order(items: itemList)
+        let vc = PaymentVC(order: order)
         navigationController?.pushViewController(vc, animated: true)
     }
     
