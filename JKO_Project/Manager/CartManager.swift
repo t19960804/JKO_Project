@@ -25,9 +25,7 @@ class CartManager {
     
     func addCommodities(_ commodities: [CommodityListCellViewModel]) {
         for commodity in commodities {
-            let commodityInCart = CommodityInCart()
-            commodityInCart.item = commodity
-            commodityInCart.createAt = Int(Date().timeIntervalSince1970)
+            let commodityInCart = CommodityInCart(item: commodity)
             RealmManager.shared.save(commodityInCart)
             currentCommodities.append(commodityInCart)
             checkStatus.insert(false, at: 0)
