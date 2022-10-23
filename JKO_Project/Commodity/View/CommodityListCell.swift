@@ -13,11 +13,11 @@ class CommodityListCell: UITableViewCell {
     
     var vm: CommodityListCellViewModel? {
         didSet {
-            commodityImageView.image = vm!.commodityImage
+            commodityImageView.image = UIImage(data: vm!.commodityImageData)
             nameLabel.text = vm!.commodityName
             descriptionLabel.text = vm!.commodityDescription
-            priceLabel.text = vm!.commodityPrice
-            dateLabel.text = vm!.commodityCreateDate
+            priceLabel.text = vm!.commodityPriceString
+            dateLabel.text = vm!.commodityCreateDateString
         }
     }
     

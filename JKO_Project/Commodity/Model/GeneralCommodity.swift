@@ -1,14 +1,14 @@
 import Foundation
 import RealmSwift
 
-class CommoditiesCollection: Codable {
+struct CommoditiesCollection: Codable {
     var items: [GeneralCommidity]
 }
 
-class GeneralCommidity: Object, Codable {
-    @Persisted var name: String
-    @Persisted var descript: String
-    @Persisted var price: Int
-    @Persisted var createAt: Int
-    @Persisted var imageName: String
+struct GeneralCommidity: Codable {
+    var name: String
+    var descript: String
+    var price: Int
+    var createAt: Int
+    var imageName: String
 }

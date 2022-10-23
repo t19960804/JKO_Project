@@ -45,8 +45,7 @@ extension HistoryVC: UITableViewDelegate, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: CommodityListCell.cellId, for: indexPath) as! CommodityListCell
         let order = orders[indexPath.section]
         let item = order.items[indexPath.item]
-        let vm = CommodityListCellViewModel(commodity: item)
-        cell.vm = vm
+        cell.vm = item
         return cell
     }
     

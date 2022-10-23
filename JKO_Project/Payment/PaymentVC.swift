@@ -20,9 +20,9 @@ class PaymentVC: UIViewController {
         return hud
     }()
     
-    private var items = [GeneralCommidity]()
+    private var items = [CommodityListCellViewModel]()
     
-    init(items: [GeneralCommidity]) {
+    init(items: [CommodityListCellViewModel]) {
         super.init(nibName: nil, bundle: nil)
         self.items = items
     }
@@ -54,7 +54,7 @@ class PaymentVC: UIViewController {
     @objc private func confirmTapped() {
         hud.show(in: view, animated: true)
         
-        let itemList = List<GeneralCommidity>()
+        let itemList = List<CommodityListCellViewModel>()
         itemList.append(objectsIn: items)
         let order = Order()
         order.items = itemList
@@ -63,7 +63,7 @@ class PaymentVC: UIViewController {
         RealmManager.shared.save(order)
         for item in items {
             if let index = CartManager.shared.getCurrentCommodities().firstIndex(where: {
-                ($0.item?.name == item.name) && ($0.item?.createAt == item.createAt)
+                ($0.item?.commodityName == item.commodityName) && ($0.item?.commodityCreateDateString == item.commodityCreateDateString)
             }) {
                 CartManager.shared.deleteAt(index)
             }
@@ -76,9 +76,9 @@ class PaymentVC: UIViewController {
     
     private func getTotalPrice() -> Int {
         var totalPrice = 0
-        items.forEach({
-            totalPrice += $0.price 
-        })
+        items.forEach {
+            totalPrice += $0.commodityPrice
+        }
         return totalPrice
     }
 }
@@ -91,8 +91,7 @@ extension PaymentVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: CommodityListCell.cellId, for: indexPath) as! CommodityListCell
         let item = items[indexPath.item]
-        let vm = CommodityListCellViewModel(commodity: item)
-        cell.vm = vm
+        cell.vm = item
         return cell
     }
     

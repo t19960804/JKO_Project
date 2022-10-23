@@ -2,7 +2,7 @@ import Foundation
 import Combine
 
 class CommodityListViewModel: ObservableObject {
-    @Published var items = [GeneralCommidity]()
+    @Published var items = [CommodityListCellViewModel]()
 
     func fetchData() {
         guard let url = Bundle.main.url(forResource: "TestData", withExtension: "json") else {
@@ -12,9 +12,9 @@ class CommodityListViewModel: ObservableObject {
         do {
             let data = try Data(contentsOf: url)
             do {
-                let collection = try JSONDecoder().decode(CommoditiesCollection.self, from: data)
+                var collection = try JSONDecoder().decode(CommoditiesCollection.self, from: data)
                 collection.items.sort(by: { $0.createAt > $1.createAt })
-                self.items = collection.items
+                self.items = collection.items.map { CommodityListCellViewModel(commodity: $0) }
             } catch {
                 print("Error - Decode Failed:\(error)")
             }

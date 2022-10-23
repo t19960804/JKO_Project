@@ -20,7 +20,7 @@ class CartManager {
         return currentCommodities
     }
     
-    func add(_ commodities: [GeneralCommidity]) {
+    func add(_ commodities: [CommodityListCellViewModel]) {
         for commodity in commodities {
             let commodityInCart = CommodityInCart()
             commodityInCart.item = commodity

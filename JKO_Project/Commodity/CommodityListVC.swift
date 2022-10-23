@@ -65,9 +65,8 @@ extension CommodityListVC: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: CommodityListCell.cellId, for: indexPath) as! CommodityListCell
-        let commodity = vm.items[indexPath.item]
-        let vm = CommodityListCellViewModel(commodity: commodity)
-        cell.vm = vm
+        let cellVM = vm.items[indexPath.item]
+        cell.vm = cellVM
         return cell
     }
     
@@ -76,7 +75,8 @@ extension CommodityListVC: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let vc = CommodityDetailVC(commodity: vm.items[indexPath.item])
+        let cellVM = vm.items[indexPath.item]
+        let vc = CommodityDetailVC(vm: cellVM)
         navigationController?.pushViewController(vc, animated: true)
     }
 }

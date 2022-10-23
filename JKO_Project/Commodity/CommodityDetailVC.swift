@@ -19,11 +19,11 @@ class CommodityDetailVC: UIViewController {
         return hud
     }()
     
-    private var commodity: GeneralCommidity!
+    private var vm: CommodityListCellViewModel!
 
-    init(commodity: GeneralCommidity) {
+    init(vm: CommodityListCellViewModel) {
         super.init(nibName: nil, bundle: nil)
-        self.commodity = commodity
+        self.vm = vm
     }
     
     required init?(coder: NSCoder) {
@@ -46,7 +46,7 @@ class CommodityDetailVC: UIViewController {
     }
     
     @objc private func buyTapped() {
-        CartManager.shared.add([self.commodity])
+        CartManager.shared.add([self.vm])
         let vc = CartVC()
         navigationController?.pushViewController(vc, animated: true)
     }
@@ -54,7 +54,7 @@ class CommodityDetailVC: UIViewController {
     @objc private func addToCartTapped() {
         hud.show(in: view, animated: true)
         
-        CartManager.shared.add([self.commodity])
+        CartManager.shared.add([self.vm])
         
         hud.dismiss(afterDelay: 1.5)
     }
@@ -78,9 +78,9 @@ class CommodityDetailVC: UIViewController {
         
         hud.centerInSuperview()
         
-        commodityImageView.image = UIImage(named: commodity.imageName)
-        nameLabel.text = commodity.name
-        descriptionLabel.text = commodity.descript
-        priceLabel.text = "$\(commodity.price)"
+        commodityImageView.image = UIImage(data: vm.commodityImageData)
+        nameLabel.text = vm.commodityName
+        descriptionLabel.text = vm.commodityDescription
+        priceLabel.text = vm.commodityPriceString
     }
 }
