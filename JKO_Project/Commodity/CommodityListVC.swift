@@ -43,13 +43,11 @@ class CommodityListVC: UIViewController {
     }
     
     @objc private func cartTapped() {
-        let vc = CartVC()
-        navigationController?.pushViewController(vc, animated: true)
+        navigationController?.pushViewController(CartVC(), animated: true)
     }
     
     @objc private func historyTapped() {
-        let vc = HistoryVC()
-        navigationController?.pushViewController(vc, animated: true)
+        navigationController?.pushViewController(HistoryVC(), animated: true)
     }
     
     private func setupUI() {
@@ -65,8 +63,7 @@ extension CommodityListVC: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: CommodityListCell.cellId, for: indexPath) as! CommodityListCell
-        let cellVM = vm.items[indexPath.item]
-        cell.vm = cellVM
+        cell.vm = vm.items[indexPath.item]
         return cell
     }
     
@@ -75,8 +72,7 @@ extension CommodityListVC: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let cellVM = vm.items[indexPath.item]
-        let vc = CommodityDetailVC(vm: cellVM)
+        let vc = CommodityDetailVC(vm: vm.items[indexPath.item])
         navigationController?.pushViewController(vc, animated: true)
     }
 }

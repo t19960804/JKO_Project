@@ -30,7 +30,7 @@ class CartManager {
             commodityInCart.createAt = Int(Date().timeIntervalSince1970)
             RealmManager.shared.save(commodityInCart)
             currentCommodities.append(commodityInCart)
-            addCheckStatus()
+            checkStatus.insert(false, at: 0)
         }
         currentCommodities.sort(by: { $0.createAt > $1.createAt })
     }
@@ -54,16 +54,16 @@ class CartManager {
     }
     
     func getCommoditiesWasChecked() -> [CommodityInCart] {
-        var commoditiesWasChecked = [CommodityInCart]()
+        var array = [CommodityInCart]()
         for i in 0..<checkStatus.count {
             let isChecked = checkStatus[i]
             if isChecked {
                 if let commodity = CartManager.shared.getCurrentCommodityAt(i) {
-                    commoditiesWasChecked.append(commodity)
+                    array.append(commodity)
                 }
             }
         }
-        return commoditiesWasChecked
+        return array
     }
     
     func getCheckStatusAt(_ index: Int) -> Bool? {
@@ -85,9 +85,5 @@ class CartManager {
             return
         }
         checkStatus.remove(at: index)
-    }
-    
-    func addCheckStatus() {
-        checkStatus.insert(false, at: 0)
     }
 }

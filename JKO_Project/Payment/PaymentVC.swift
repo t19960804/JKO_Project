@@ -55,7 +55,7 @@ class PaymentVC: UIViewController {
         hud.show(in: view, animated: true)
         
         RealmManager.shared.save(order)
-        deleteItemFromCart()
+        deleteComodityFromCart()
         
         hud.dismiss(afterDelay: 1.5)
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.7, execute: {
@@ -63,7 +63,7 @@ class PaymentVC: UIViewController {
         })
     }
     
-    private func deleteItemFromCart() {
+    private func deleteComodityFromCart() {
         for orderItem in order.items {
             if let index = CartManager.shared.getCurrentCommodities().firstIndex(where: {
                 ($0.item?.commodityName == orderItem.commodityName) && ($0.item?.commodityCreateDateString == orderItem.commodityCreateDateString)
@@ -81,8 +81,7 @@ extension PaymentVC: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: CommodityListCell.cellId, for: indexPath) as! CommodityListCell
-        let item = order.items[indexPath.item]
-        cell.vm = item
+        cell.vm = order.items[indexPath.item]
         return cell
     }
     

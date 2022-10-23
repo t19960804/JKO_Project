@@ -47,8 +47,7 @@ class CommodityDetailVC: UIViewController {
     
     @objc private func buyTapped() {
         CartManager.shared.addCommodities([vm])
-        let vc = CartVC()
-        navigationController?.pushViewController(vc, animated: true)
+        navigationController?.pushViewController(CartVC(), animated: true)
     }
     
     @objc private func addToCartTapped() {
