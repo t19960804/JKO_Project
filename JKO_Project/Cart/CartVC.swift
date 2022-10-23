@@ -90,8 +90,7 @@ extension CartVC: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let cell = tableView.cellForRow(at: indexPath)
-        let isChecked = checkStatus[indexPath.item]
-        checkStatus[indexPath.item] = !isChecked
+        checkStatus[indexPath.item].toggle()
         cell?.accessoryType = checkStatus[indexPath.item] ? .checkmark : .none
     }
     
