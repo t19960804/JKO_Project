@@ -13,7 +13,7 @@ class Order: Object {
         self.totalPrice = getTotalPrice()
     }
     
-    func getTotalPrice() -> Int {
+    private func getTotalPrice() -> Int {
         var totalPrice = 0
         items.forEach {
             totalPrice += $0.commodityPrice

@@ -55,18 +55,22 @@ class PaymentVC: UIViewController {
         hud.show(in: view, animated: true)
         
         RealmManager.shared.save(order)
-        for item in order.items {
-            if let index = CartManager.shared.getCurrentCommodities().firstIndex(where: {
-                ($0.item?.commodityName == item.commodityName) && ($0.item?.commodityCreateDateString == item.commodityCreateDateString)
-            }) {
-                CartManager.shared.deleteAt(index)
-            }
-        }
+        deleteItemFromCart()
         
         hud.dismiss(afterDelay: 1.5)
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.7, execute: {
             self.navigationController?.popToRootViewController(animated: true)
         })
+    }
+    
+    private func deleteItemFromCart() {
+        for orderItem in order.items {
+            if let index = CartManager.shared.getCurrentCommodities().firstIndex(where: {
+                ($0.item?.commodityName == orderItem.commodityName) && ($0.item?.commodityCreateDateString == orderItem.commodityCreateDateString)
+            }) {
+                CartManager.shared.deleteAt(index)
+            }
+        }
     }
 }
 
@@ -90,7 +94,7 @@ extension PaymentVC: UITableViewDelegate, UITableViewDataSource {
         let footer = UIView()
         let titleLabel = UILabel()
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
-        titleLabel.text  = "$\(order.getTotalPrice())"
+        titleLabel.text  = "$\(order.totalPrice)"
         footer.addSubview(titleLabel)
         titleLabel.centerInSuperview()
         return footer
