@@ -11,6 +11,7 @@ class CartManager {
         checkStatus = Array(repeating: false, count: currentCommodities.count)
     }
     
+    // MARK: - Commodity Operation
     func getCurrentCommodityAt(_ index: Int) -> CommodityInCart? {
         if currentCommodities.isEmpty || index >= currentCommodities.count {
             return nil
@@ -44,6 +45,7 @@ class CartManager {
         deleteCheckStatusAt(index)
     }
     
+    // MARK: - Check Status Operation
     func noCommoditiesWasChecked() -> Bool {
         if checkStatus.contains(true) == false {
             return true
