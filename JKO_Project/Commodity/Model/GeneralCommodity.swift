@@ -1,5 +1,4 @@
 import Foundation
-import RealmSwift
 
 struct CommoditiesCollection: Codable {
     var items: [GeneralCommidity]

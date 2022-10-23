@@ -38,6 +38,12 @@ class CartVC: UIViewController {
     }
     
     @objc private func settleTapped() {
+        if checkStatus.contains(true) == false {
+            hud.show(in: self.view, animated: true)
+            hud.dismiss(afterDelay: 1)
+            return
+        }
+        
         var itemsChecked = [CommodityListCellViewModel]()
         for i in 0..<checkStatus.count {
             let isChecked = checkStatus[i]
@@ -48,11 +54,7 @@ class CartVC: UIViewController {
                 }
             }
         }
-        if itemsChecked.isEmpty {
-            hud.show(in: self.view, animated: true)
-            hud.dismiss(afterDelay: 1)
-            return
-        }
+        
         let itemList = List<CommodityListCellViewModel>()
         itemList.append(objectsIn: itemsChecked)
         let order = Order(items: itemList)
