@@ -20,8 +20,6 @@ class CartVC: UIViewController {
         return hud
     }()
     
-    private var checkStatus = Array(repeating: false, count: CartManager.shared.getCurrentCommodities().count)
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
@@ -38,25 +36,22 @@ class CartVC: UIViewController {
     }
     
     @objc private func settleTapped() {
-        if checkStatus.contains(true) == false {
+        if CartManager.shared.noCommoditiesWasChecked() {
             hud.show(in: self.view, animated: true)
             hud.dismiss(afterDelay: 1)
             return
         }
         
-        var itemsChecked = [CommodityListCellViewModel]()
-        for i in 0..<checkStatus.count {
-            let isChecked = checkStatus[i]
-            if isChecked {
-                if let commodity = CartManager.shared.getCurrentCommodityAt(i),
-                   let item = commodity.item {
-                    itemsChecked.append(item)
-                }
+        var vms = [CommodityListCellViewModel]()
+        let commoditiesWasChecked = CartManager.shared.getCommoditiesWasChecked()
+        commoditiesWasChecked.forEach({
+            if let item = $0.item {
+                vms.append(item)
             }
-        }
+        })
         
         let itemList = List<CommodityListCellViewModel>()
-        itemList.append(objectsIn: itemsChecked)
+        itemList.append(objectsIn: vms)
         let order = Order(items: itemList)
         let vc = PaymentVC(order: order)
         navigationController?.pushViewController(vc, animated: true)
@@ -75,12 +70,11 @@ extension CartVC: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: CommodityListCell.cellId, for: indexPath) as! CommodityListCell
-        if let item = CartManager.shared.getCurrentCommodityAt(indexPath.item)?.item {
+        if let item = CartManager.shared.getCurrentCommodityAt(indexPath.item)?.item,
+           let isChecked = CartManager.shared.getCheckStatusAt(indexPath.item) {
             cell.vm = item
+            cell.accessoryType = isChecked ? .checkmark : .none
         }
-        
-        let isChecked = checkStatus[indexPath.item]
-        cell.accessoryType = isChecked ? .checkmark : .none
         return cell
     }
     
@@ -90,14 +84,15 @@ extension CartVC: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let cell = tableView.cellForRow(at: indexPath)
-        checkStatus[indexPath.item].toggle()
-        cell?.accessoryType = checkStatus[indexPath.item] ? .checkmark : .none
+        CartManager.shared.toggleCheckStatusAt(indexPath.item)
+        if let checkStatus = CartManager.shared.getCheckStatusAt(indexPath.item) {
+            cell?.accessoryType = checkStatus ? .checkmark : .none
+        }
     }
     
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let deleteAction = UIContextualAction(style: .destructive, title: "刪除") { (_, _, _) in
-            CartManager.shared.deleteAt(indexPath.item)
-            self.checkStatus.remove(at: indexPath.item)
+            CartManager.shared.deleteCommodityAt(indexPath.item)
             tableView.deleteRows(at: [indexPath], with: .automatic)
         }
         let swipeActions = UISwipeActionsConfiguration(actions: [deleteAction])

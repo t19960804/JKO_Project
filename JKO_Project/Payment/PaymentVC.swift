@@ -68,7 +68,7 @@ class PaymentVC: UIViewController {
             if let index = CartManager.shared.getCurrentCommodities().firstIndex(where: {
                 ($0.item?.commodityName == orderItem.commodityName) && ($0.item?.commodityCreateDateString == orderItem.commodityCreateDateString)
             }) {
-                CartManager.shared.deleteAt(index)
+                CartManager.shared.deleteCommodityAt(index)
             }
         }
     }
