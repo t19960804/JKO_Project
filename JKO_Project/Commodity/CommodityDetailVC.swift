@@ -46,7 +46,7 @@ class CommodityDetailVC: UIViewController {
     }
     
     @objc private func buyTapped() {
-        CartManager.shared.addCommodity([self.vm])
+        CartManager.shared.addCommodities([vm])
         let vc = CartVC()
         navigationController?.pushViewController(vc, animated: true)
     }
@@ -54,7 +54,7 @@ class CommodityDetailVC: UIViewController {
     @objc private func addToCartTapped() {
         hud.show(in: view, animated: true)
         
-        CartManager.shared.addCommodity([self.vm])
+        CartManager.shared.addCommodities([vm])
         
         hud.dismiss(afterDelay: 1.5)
     }
