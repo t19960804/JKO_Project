@@ -41,20 +41,22 @@ class CartVC: UIViewController {
             hud.dismiss(afterDelay: 1)
             return
         }
-        
+        let vc = PaymentVC(order: getOrder())
+        navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    private func getOrder() -> Order {
         var vms = [CommodityListCellViewModel]()
         let commoditiesWasChecked = CartManager.shared.getCommoditiesWasChecked()
-        commoditiesWasChecked.forEach({
+        commoditiesWasChecked.forEach {
             if let item = $0.item {
                 vms.append(item)
             }
-        })
+        }
         
         let itemList = List<CommodityListCellViewModel>()
         itemList.append(objectsIn: vms)
-        let order = Order(items: itemList)
-        let vc = PaymentVC(order: order)
-        navigationController?.pushViewController(vc, animated: true)
+        return Order(items: itemList)
     }
     
     private func setupUI() {
