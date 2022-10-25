@@ -4,6 +4,7 @@ import RealmSwift
 class CommodityInCart: Object {
     @Persisted var item: CommodityListCellViewModel?
     @Persisted var createAt: Int
+    var isChecked: Bool = false
     
     convenience init(item: CommodityListCellViewModel) {
         self.init()

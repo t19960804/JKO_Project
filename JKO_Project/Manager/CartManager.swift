@@ -3,15 +3,12 @@ import Foundation
 class CartManager {
     static let shared = CartManager()
     private var currentCommodities = [CommodityInCart]()
-    private var checkStatus = [Bool]()
     
     private init() {
         currentCommodities = Array(RealmManager.shared.fetch(CommodityInCart.self))
         currentCommodities.sort(by: { $0.createAt > $1.createAt })
-        checkStatus = Array(repeating: false, count: currentCommodities.count)
     }
     
-    // MARK: - Commodity Operation
     func getCurrentCommodityAt(_ index: Int) -> CommodityInCart? {
         if currentCommodities.isEmpty || index >= currentCommodities.count {
             return nil
@@ -28,7 +25,6 @@ class CartManager {
             let commodityInCart = CommodityInCart(item: commodity)
             RealmManager.shared.save(commodityInCart)
             currentCommodities.append(commodityInCart)
-            checkStatus.insert(false, at: 0)
         }
         currentCommodities.sort(by: { $0.createAt > $1.createAt })
     }
@@ -40,48 +36,32 @@ class CartManager {
         let commodity = currentCommodities[index]
         RealmManager.shared.delete(commodity)
         currentCommodities.remove(at: index)
-        deleteCheckStatusAt(index)
     }
     
-    // MARK: - Check Status Operation
     func noCommoditiesWasChecked() -> Bool {
-        if checkStatus.contains(true) == false {
-            return true
+        for commodity in currentCommodities {
+            if commodity.isChecked {
+                return false
+            }
         }
-        return false
+        return true
     }
     
     func getCommoditiesWasChecked() -> [CommodityInCart] {
-        var array = [CommodityInCart]()
-        for i in 0..<checkStatus.count {
-            let isChecked = checkStatus[i]
-            if isChecked {
-                if let commodity = CartManager.shared.getCurrentCommodityAt(i) {
-                    array.append(commodity)
-                }
-            }
-        }
-        return array
+        return currentCommodities.filter { $0.isChecked }
     }
     
     func getCheckStatusAt(_ index: Int) -> Bool? {
-        if checkStatus.isEmpty || index >= checkStatus.count {
+        if currentCommodities.isEmpty || index >= currentCommodities.count {
             return nil
         }
-        return checkStatus[index]
+        return currentCommodities[index].isChecked
     }
     
     func toggleCheckStatusAt(_ index: Int) {
-        if checkStatus.isEmpty || index >= checkStatus.count {
+        if currentCommodities.isEmpty || index >= currentCommodities.count {
             return
         }
-        checkStatus[index].toggle()
-    }
-    
-    func deleteCheckStatusAt(_ index: Int) {
-        if checkStatus.isEmpty || index >= checkStatus.count {
-            return
-        }
-        checkStatus.remove(at: index)
+        currentCommodities[index].isChecked.toggle()
     }
 }
