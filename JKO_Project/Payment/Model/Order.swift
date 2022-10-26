@@ -6,18 +6,10 @@ class Order: Object {
     @Persisted var createAt: Int
     @Persisted var totalPrice: Int
     
-    convenience init(items: List<CommodityListCellViewModel>) {
+    convenience init(items: List<CommodityListCellViewModel>, totalPrice: Int) {
         self.init()
         self.items = items
         self.createAt = Int(Date().timeIntervalSince1970)
-        self.totalPrice = getTotalPrice()
-    }
-    
-    private func getTotalPrice() -> Int {
-        var totalPrice = 0
-        items.forEach {
-            totalPrice += $0.commodityPrice
-        }
-        return totalPrice
+        self.totalPrice = totalPrice
     }
 }

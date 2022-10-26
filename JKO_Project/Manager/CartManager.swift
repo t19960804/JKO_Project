@@ -47,8 +47,15 @@ class CartManager {
         return true
     }
     
-    func getCommoditiesWasChecked() -> [CommodityInCart] {
-        return currentCommodities.filter { $0.isChecked }
+    func getCommoditiesWasChecked() -> (commodities: [CommodityInCart], totalPrice: Int) {
+        let commoditiesWasChecked = currentCommodities.filter { $0.isChecked }
+        var totalPrice = 0
+        commoditiesWasChecked.forEach {
+            if let price = $0.item?.commodityPrice {
+                totalPrice += price
+            }
+        }
+        return (commoditiesWasChecked, totalPrice)
     }
     
     func getCheckStatusAt(_ index: Int) -> Bool? {

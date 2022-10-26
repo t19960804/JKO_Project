@@ -47,8 +47,8 @@ class CartVC: UIViewController {
     
     private func getOrder() -> Order {
         var vms = [CommodityListCellViewModel]()
-        let commoditiesWasChecked = CartManager.shared.getCommoditiesWasChecked()
-        commoditiesWasChecked.forEach {
+        let tuple = CartManager.shared.getCommoditiesWasChecked()
+        tuple.commodities.forEach {
             if let item = $0.item {
                 vms.append(item)
             }
@@ -56,7 +56,7 @@ class CartVC: UIViewController {
         
         let itemList = List<CommodityListCellViewModel>()
         itemList.append(objectsIn: vms)
-        return Order(items: itemList)
+        return Order(items: itemList, totalPrice: tuple.totalPrice)
     }
     
     private func setupUI() {
